@@ -73,11 +73,9 @@
 
 <p>Use these in an episode&nbsp;post:</p>
 
-<ul>
-  <li><code>[podlove-episode-downloads]</code>: Display downloads in a dropdown&nbsp;menu.</li>
-  <li><code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available&nbsp;formats.</li>
-  <li><code>[podlove-web-player]</code>: Display a web&nbsp;player.</li>
-</ul>
+<p><code>[podlove-episode-downloads]</code>: Display downloads in a dropdown menu.<br />
+<code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available formats.<br />
+<code>[podlove-web-player]</code>: Display a web&nbsp;player.</p>
 
 <h2 id="episode-data-podlove-episode-field">Episode Data:&nbsp;<code>[podlove-episode field="..."]</code></h2>
 
@@ -85,21 +83,10 @@
 
 <h3 id="parameters">Parameters</h3>
 
-<ul>
-  <li>field: (required) Name of the data field. Possible&nbsp;values:</li>
-</ul>
-
-<div class="highlight plain "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>
-</pre></td>
-  <td class="code"><pre>title, subtitle, summary, slug, duration, chapters, image, record_date, publication_date</pre></td>
-</tr></table>
-</div>
-
-<ul>
-  <li>format: (optional) used by <code>duration</code> field. Possible values: <code>full</code>, <code>HH:MM:SS</code>. Default:&nbsp;<code>HH:MM:SS</code></li>
-  <li>date_format: (optional) used by <code>record_date</code> and <code>publication_date</code>. For options, see (date manual)[http://php.net/manual/en/function.date.php]. Defaults to WordPress&nbsp;settings.</li>
-</ul>
+<p><strong>field:</strong> <em>(required)</em> Name of the data field. Possible values:<br />
+title, subtitle, summary, slug, duration, chapters, image, record_date, publication_date<br />
+<strong>format:</strong> <em>(optional)</em> used by <code>duration</code> field. Possible values: <code>full</code>, <code>HH:MM:SS</code>. Default: <code>HH:MM:SS</code><br />
+<strong>date_format:</strong> <em>(optional)</em> used by <code>record_date</code> and <code>publication_date</code>. For options, see <a href="http://php.net/manual/en/function.date.php">date manual</a>. Defaults to WordPress&nbsp;settings.</p>
 
 <div class="highlight plain "><table class="CodeRay"><tr>
   <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
@@ -117,34 +104,22 @@
 </div>
 
 <h2 id="podcast-data-podlove-podcast-field">Podcast Data:&nbsp;<code>[podlove-podcast field="..."]</code></h2>
-<p>Displays the fields data.<br />
-Alias:&nbsp;<code>[podlove-show field="..."]</code></p>
+<p>Displays the fields&nbsp;data.  </p>
 
 <h3 id="parameters-1">Parameters</h3>
 
-<ul>
-  <li>field: (required) Name of the data field. Possible&nbsp;values:</li>
-</ul>
-
-<div class="highlight plain "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre>title, slug, subtitle, cover_image, summary, author_name, owner_name, owner_email,
-publisher_name, publisher_url, license_name, license_url, keywords, explicit,
-label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length, language</pre></td>
-</tr></table>
-</div>
+<p><strong>field</strong>: <em>(required)</em> Name of the data field. Possible values:<br />
+title, slug, subtitle, cover_image, summary, author_name, owner_name,&nbsp;owner_email,
+publisher_name, publisher_url, license_name, license_url, keywords,&nbsp;explicit,
+label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length,&nbsp;language</p>
 
 <h2 id="contributors-module-podlove-contributors">Contributors module:&nbsp;<code>[podlove-contributors]</code></h2>
 
 <p>Lists all&nbsp;contributors.</p>
 
 <h3 id="parameters-2">Parameters</h3>
-<ul>
-  <li>separator: (optional) Default: “,&nbsp;“</li>
-</ul>
+
+<p><strong>separator:</strong> <em>(optional)</em> Default: “,&nbsp;“</p>
 
 <h2 id="episode-templates-podlove-template-idtemplate-title">Episode templates:&nbsp;<code>[podlove-template id="Template Title"]</code></h2>
 
@@ -154,10 +129,8 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
 
 <h3 id="parameters-3">Parameters</h3>
 
-<ul>
-  <li>title: (required) Title of template to&nbsp;render.</li>
-  <li>autop: (optional) Wraps blocks of text in p tags. ‘yes’ or ‘no’. Default:&nbsp;‘yes’</li>
-</ul>
+<p><strong>title:</strong> <em>(required)</em> Title of template to render.<br />
+<strong>autop:</strong> <em>(optional)</em> Wraps blocks of text in p tags. ‘yes’ or ‘no’. Default:&nbsp;‘yes’</p>
 
     </div>
   </div>
