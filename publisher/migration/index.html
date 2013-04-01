@@ -67,42 +67,31 @@
     <div class="small-12 large-8 columns">
       <h1 id="migrating-your-podcast">Migrating your&nbsp;Podcast</h1>
 
-<h2 id="who-is-this-for">Who is this&nbsp;for?</h2>
+<p>This page is for you if you are currently using WordPress to publish a podcast — and looking for a way to move all your data into the Podlove Publisher. There is a module to help you as much as&nbsp;possible.</p>
 
-<ul>
-  <li>you already have a WordPress based podcast and want to switch to the Podlove&nbsp;Publisher</li>
-  <li>explicit support for podPress and&nbsp;PowerPress</li>
-  <li>should be possible to migrate any WordPress data based on “enclosures”. Not sure? Just try, you’ll see if the assistant can detect the&nbsp;episodes.</li>
-</ul>
+<h2 id="activating-the-assistant-module">Activating the Assistant&nbsp;Module</h2>
 
-<h2 id="what-will-be-migrated">What will be&nbsp;migrated?</h2>
+<p>If it’s not already active, enable the module by going to <code>Podlove &gt; Modules</code> and activating the “Migration”&nbsp;checkbox.</p>
 
-<ul>
-  <li>url&nbsp;redirect</li>
-  <li>assets will be&nbsp;created</li>
-  <li>feeds for the assets will be&nbsp;created</li>
-  <li>some metadata: subtitle, summary,&nbsp;duration</li>
-  <li>post text will be untouched except: all players will be&nbsp;removed</li>
-  <li>all&nbsp;comments</li>
-  <li>all metadata except enclosures (because they are stored differently&nbsp;now)</li>
-</ul>
+<p><a href="/assets/images/migration/activate.jpg" class="th radius">
+	<img src="/assets/images/migration/activate.jpg" />
+</a></p>
+
+<h2 id="the-migration">The&nbsp;Migration</h2>
+
+<p>Right now, you probably have both podcast episodes and blog posts. The episodes will be determined and displayed to you, so you can select which ones are real episodes you like to migrate. They will appear as <strong>Episodes</strong> below <strong>Posts</strong> in the WordPress sidebar&nbsp;menu.</p>
+
+<p>All post data — title, content, comments, post meta, … — will just be copied. However, episode critical metadata will be extracted and migrated into the Publisher format for you, if available: subtitle, summary, duration etc. To further ease the migration, you may choose to automatically remove player shortcodes from the current post&nbsp;contents.</p>
+
+<p><strong>Feeds will be created automatically</strong>. But careful: it <em>might</em> happen that the new feeds have exactly the same URLs as your previous ones. You may have to deactivate your previous podcasting plugin to see the new Podlove Publisher&nbsp;feeds.</p>
+
+<p>It’s possible that you can’t keep your episode URLs. However, <strong>redirects are created automatically</strong> redirecting your current URLs to the new episode&nbsp;URLs.</p>
+
+<p>Good&nbsp;Luck!</p>
 
 <h2 id="will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</h2>
 
 <p>Yes. The Migration assistant only <em>looks</em> at your existing data, it <em>does not change anything</em>. Even when you start the migration, all new episodes will be created <em>pending</em>, meaning you can preview them to check if everything looks as expected — while your old system still works like before. Only when you have verified that everything looks fine you hit the switch which turns off all old posts and publishes all the new episodes. Even at this point your old posts still exist — only they are not accessible by the&nbsp;public.</p>
-
-<h2 id="what-should-you-do-before-you-migrate">What should you do before you&nbsp;migrate?</h2>
-
-<ul>
-  <li>backup</li>
-  <li>move all media files to the same url&nbsp;directory</li>
-</ul>
-
-<h2 id="troubleshooting">Troubleshooting</h2>
-
-<ul>
-  <li>If you are using a caching plugin, please clear the&nbsp;cache</li>
-</ul>
 
     </div>
 
@@ -112,7 +101,7 @@
         
             <p>↑ <a href="/publisher/">Back to Podlove&nbsp;Publisher</a></p>
         
-        <ol class="toc"><li><a href="#who-is-this-for">Who is this&nbsp;for?</a></li><li><a href="#what-will-be-migrated">What will be&nbsp;migrated?</a></li><li><a href="#will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</a></li><li><a href="#what-should-you-do-before-you-migrate">What should you do before you&nbsp;migrate?</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ol>
+        <ol class="toc"><li><a href="#activating-the-assistant-module">Activating the Assistant&nbsp;Module</a></li><li><a href="#the-migration">The&nbsp;Migration</a></li><li><a href="#will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</a></li></ol>
       </div>
     
   </div>
