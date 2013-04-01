@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Shortcodes</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li><a href="">About</a></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/migration/">Migration</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+            
+              <li><a href="/publisher/writing-modules/">Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/web-player/">Web&nbsp;Player</a>
+          <ul class="dropdown">
+            <li><a href="/web-player/">Podlove Web&nbsp;Player</a></li>
+            <li><a href="">Guides</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Shortcodes</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="row">
+    <div class="small-10 columns">
+      <h2 id="episode-shortcodes">Episode&nbsp;Shortcodes</h2>
+
+<p>Use these in an episode&nbsp;post:</p>
+
+<ul>
+  <li><code>[podlove-episode-downloads]</code>: Display downloads in a dropdown&nbsp;menu.</li>
+  <li><code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available&nbsp;formats.</li>
+  <li><code>[podlove-web-player]</code>: Display a web&nbsp;player.</li>
+</ul>
+
+<h2 id="episode-data-podlove-episode-field">Episode Data:&nbsp;<code>[podlove-episode field="..."]</code></h2>
+
+<p>Displays the fields&nbsp;data.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<ul>
+  <li>field: (required) Name of the data field. Possible&nbsp;values:</li>
+</ul>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>
+</pre></td>
+  <td class="code"><pre>title, subtitle, summary, slug, duration, chapters, image, record_date, publication_date</pre></td>
+</tr></table>
+</div>
+
+<ul>
+  <li>format: (optional) used by <code>duration</code> field. Possible values: <code>full</code>, <code>HH:MM:SS</code>. Default:&nbsp;<code>HH:MM:SS</code></li>
+  <li>date_format: (optional) used by <code>record_date</code> and <code>publication_date</code>. For options, see (date manual)[http://php.net/manual/en/function.date.php]. Defaults to WordPress&nbsp;settings.</li>
+</ul>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>[podlove-episode field=&quot;subtitle&quot;]
+[podlove-episode field=&quot;summary&quot;]
+[podlove-episode field=&quot;slug&quot;]
+[podlove-episode field=&quot;duration&quot;]
+[podlove-episode field=&quot;chapters&quot;]</pre></td>
+</tr></table>
+</div>
+
+<h2 id="podcast-data-podlove-podcast-field">Podcast Data:&nbsp;<code>[podlove-podcast field="..."]</code></h2>
+<p>Displays the fields data.<br />
+Alias:&nbsp;<code>[podlove-show field="..."]</code></p>
+
+<h3 id="parameters-1">Parameters</h3>
+
+<ul>
+  <li>field: (required) Name of the data field. Possible&nbsp;values:</li>
+</ul>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>title, slug, subtitle, cover_image, summary, author_name, owner_name, owner_email,
+publisher_name, publisher_url, license_name, license_url, keywords, explicit,
+label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length, language</pre></td>
+</tr></table>
+</div>
+
+<h2 id="contributors-module-podlove-contributors">Contributors module:&nbsp;<code>[podlove-contributors]</code></h2>
+
+<p>Lists all&nbsp;contributors.</p>
+
+<h3 id="parameters-2">Parameters</h3>
+<ul>
+  <li>separator: (optional) Default: “,&nbsp;“</li>
+</ul>
+
+<h2 id="episode-templates-podlove-template-idtemplate-title">Episode templates:&nbsp;<code>[podlove-template id="Template Title"]</code></h2>
+
+<p>Renders configured episode&nbsp;template.</p>
+
+<p><code>[podlove-template id="..."]</code></p>
+
+<h3 id="parameters-3">Parameters</h3>
+
+<ul>
+  <li>title: (required) Title of template to&nbsp;render.</li>
+  <li>autop: (optional) Wraps blocks of text in p tags. ‘yes’ or ‘no’. Default:&nbsp;‘yes’</li>
+</ul>
+
+    </div>
+  </div>
+
+</body>
+</html>

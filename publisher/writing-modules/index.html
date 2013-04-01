@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Writing Modules</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li><a href="">About</a></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/migration/">Migration</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+            
+              <li><a href="/publisher/writing-modules/">Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/web-player/">Web&nbsp;Player</a>
+          <ul class="dropdown">
+            <li><a href="/web-player/">Podlove Web&nbsp;Player</a></li>
+            <li><a href="">Guides</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Writing&nbsp;Modules</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="row">
+    <div class="small-10 columns">
+      <h1 id="podlove-publisher-modules">Podlove Publisher&nbsp;Modules</h1>
+
+<p>Modules can be compared to WordPress plugins. We use modules to keep the code base clean and decoupled. Furthermore, this system allows for easy activation/deactivation of modules without the risk to break&nbsp;stuff.</p>
+
+<h2 id="creating-a-module">Creating A&nbsp;Module</h2>
+
+<ul>
+  <li>each module lives in a separate directory in&nbsp;<code>/lib/modules</code></li>
+  <li>each module contains at least one file containing the main module&nbsp;class</li>
+  <li>each module class inherits from&nbsp;<code>\Podlove\Modules\Base</code></li>
+</ul>
+
+<p>Each module has a <code>load()</code> method. This will be called to load the module. Here hooks can be registered, files be loaded etc. The module must not change any behavior before <code>load()</code> being&nbsp;called!</p>
+
+<p>There should be protected properties <code>$module_name, $module_description</code>. They can be accessed from the outside via getters. See Base&nbsp;module.</p>
+
+<h2 id="naming-conventions">Naming&nbsp;Conventions</h2>
+
+<p>Directories, file names and class names are snake cased. Directories and file names are all lowercased, class names are <code>Camel_Snake_Cased</code>. The namespace is CamelCased.&nbsp;Example:</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>Plugin Name: Podlove Web Player
+Directory:   podlove_web_player
+File Name:   podlove_web_player.php
+Class Name:  Podlove_Web_Player
+Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
+</tr></table>
+</div>
+
+<h3 id="example-module-file">Example Module&nbsp;File</h3>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span> 
+<span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">PodloveWebPlayer</span>;
+
+<span class="keyword">class</span> <span class="class">Podlove_Web_Player</span> <span class="keyword">extends</span> \<span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">Base</span> {
+
+    <span class="keyword">protected</span> <span class="local-variable">$module_name</span> = <span class="string"><span class="delimiter">'</span><span class="content">Podlove Web Player</span><span class="delimiter">'</span></span>;
+    <span class="keyword">protected</span> <span class="local-variable">$module_description</span> = <span class="string"><span class="delimiter">'</span><span class="content">An audio player for the web</span><span class="delimiter">'</span></span>;
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">load</span>() {
+        <span class="comment">// register actions</span>
+        add_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_dashboard_meta_boxes</span><span class="delimiter">'</span></span>, <span class="predefined">array</span>( <span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">register_meta_boxes</span><span class="delimiter">'</span></span> ) );
+        <span class="comment">// require additional module files</span>
+        <span class="predefined">require_once</span> <span class="string"><span class="delimiter">'</span><span class="content">player/podlove-web-player/podlove-web-player.php</span><span class="delimiter">'</span></span>;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">register_meta_boxes</span>() {
+        <span class="comment">// code ...</span>
+    }
+
+}</pre></td>
+</tr></table>
+</div>
+
+<h2 id="options">Options</h2>
+
+<p>A module can register its own options. This happens in a declarative way. The Publisher plugin will handle storage and form&nbsp;generation.</p>
+
+<h3 id="register-options">Register&nbsp;Options</h3>
+
+<p>Use the module method <code>public function register_option( $name, $input_type, $args )</code> to register an option. <code>$name</code> is the name of your option. There is no need to prefix it. Uniqueness is handled by the Publisher, so <code>"title"</code> would be an acceptable&nbsp;name.</p>
+
+<p>Available input&nbsp;types:</p>
+
+<ul>
+  <li>string</li>
+  <li>text</li>
+  <li>select</li>
+  <li>checkbox</li>
+  <li>radio</li>
+  <li>image</li>
+</ul>
+
+<p>Right now there is no documentation on forms. Please look <a href="https://github.com/podlove/podlove-publisher/blob/master/lib/form/input/builder.php">into the form builder file</a> for possible&nbsp;arguments.</p>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span>
+<span class="comment">// register options in load()</span>
+<span class="local-variable">$this</span>-&gt;register_option( <span class="string"><span class="delimiter">'</span><span class="content">my setting</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>, <span class="predefined">array</span>(
+    <span class="string"><span class="delimiter">'</span><span class="content">label</span><span class="delimiter">'</span></span>       =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">my setting</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
+    <span class="string"><span class="delimiter">'</span><span class="content">description</span><span class="delimiter">'</span></span> =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">yada yada yada</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
+    <span class="string"><span class="delimiter">'</span><span class="content">default</span><span class="delimiter">'</span></span>     =&gt; <span class="string"><span class="delimiter">'</span><span class="content">A sensible default</span><span class="delimiter">'</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>        =&gt; <span class="predefined">array</span>( <span class="string"><span class="delimiter">'</span><span class="content">class</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">regular-text</span><span class="delimiter">'</span></span> )
+) );
+
+<span class="local-variable">$this</span>-&gt;register_option( <span class="string"><span class="delimiter">'</span><span class="content">a_number</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">select</span><span class="delimiter">'</span></span>, <span class="predefined">array</span>(
+    <span class="string"><span class="delimiter">'</span><span class="content">label</span><span class="delimiter">'</span></span>       =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">Number</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
+    <span class="string"><span class="delimiter">'</span><span class="content">description</span><span class="delimiter">'</span></span> =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">Select a number</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
+    <span class="string"><span class="delimiter">'</span><span class="content">default</span><span class="delimiter">'</span></span>     =&gt; <span class="integer">3</span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">options</span><span class="delimiter">'</span></span>     =&gt; <span class="predefined">array</span>( <span class="integer">1</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">one</span><span class="delimiter">'</span></span>, <span class="integer">2</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">two</span><span class="delimiter">'</span></span>, <span class="integer">3</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">three</span><span class="delimiter">'</span></span> )
+) );</pre></td>
+</tr></table>
+</div>
+
+    </div>
+  </div>
+
+</body>
+</html>

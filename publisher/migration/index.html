@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Migration</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li><a href="">About</a></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/migration/">Migration</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+            
+              <li><a href="/publisher/writing-modules/">Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/web-player/">Web&nbsp;Player</a>
+          <ul class="dropdown">
+            <li><a href="/web-player/">Podlove Web&nbsp;Player</a></li>
+            <li><a href="">Guides</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Migration</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="row">
+    <div class="small-10 columns">
+      <h1 id="migrating-your-podcast">Migrating your&nbsp;Podcast</h1>
+
+<h2 id="who-is-this-for">Who is this&nbsp;for?</h2>
+
+<ul>
+  <li>you already have a WordPress based podcast and want to switch to the Podlove&nbsp;Publisher</li>
+  <li>explicit support for podPress and&nbsp;PowerPress</li>
+  <li>should be possible to migrate any WordPress data based on “enclosures”. Not sure? Just try, you’ll see if the assistant can detect the&nbsp;episodes.</li>
+</ul>
+
+<h2 id="what-will-be-migrated">What will be&nbsp;migrated?</h2>
+
+<ul>
+  <li>url&nbsp;redirect</li>
+  <li>assets will be&nbsp;created</li>
+  <li>feeds for the assets will be&nbsp;created</li>
+  <li>some metadata: subtitle, summary,&nbsp;duration</li>
+  <li>post text will be untouched except: all players will be&nbsp;removed</li>
+  <li>all&nbsp;comments</li>
+  <li>all metadata except enclosures (because they are stored differently&nbsp;now)</li>
+</ul>
+
+<h2 id="will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</h2>
+
+<p>Yes. The Migration assistant only <em>looks</em> at your existing data, it <em>does not change anything</em>. Even when you start the migration, all new episodes will be created <em>pending</em>, meaning you can preview them to check if everything looks as expected — while your old system still works like before. Only when you have verified that everything looks fine you hit the switch which turns off all old posts and publishes all the new episodes. Even at this point your old posts still exist — only they are not accessible by the&nbsp;public.</p>
+
+<h2 id="what-should-you-do-before-you-migrate">What should you do before you&nbsp;migrate?</h2>
+
+<ul>
+  <li>backup</li>
+  <li>move all media files to the same url&nbsp;directory</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<ul>
+  <li>If you are using a caching plugin, please clear the&nbsp;cache</li>
+</ul>
+
+    </div>
+  </div>
+
+</body>
+</html>
