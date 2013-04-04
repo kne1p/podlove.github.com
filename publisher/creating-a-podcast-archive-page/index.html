@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Creating a Podcast Archive Page</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/publisher/migration/">Migration</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+            
+              <li><a href="/publisher/writing-modules/">Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+        <li>
+          <a href="/web-player/">Web&nbsp;Player</a>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Creating a Podcast Archive&nbsp;Page</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="content row">
+
+    <div class="large-12 columns">
+      <p>Would you like to have a page listing all your podcast episodes like <a href="http://newz-of-the-world.com/archive/">newz-of-the-world.com/archive</a>? This is a planned feature for the Publisher but until it actually ships, you can still create such a page with the help of another&nbsp;plugin.</p>
+
+<h2 id="steps">Steps</h2>
+
+<ol>
+  <li>Install the <a href="http://wordpress.org/extend/plugins/archivist-custom-archive-templates/">Archivist plugin</a>.</li>
+  <li>Go to <code>Settings &gt; Archivist</code> and add a template named “podcast” (or whatever you like).<br />
+Copy <span class="amp">&amp;</span> paste the template below or build your&nbsp;own.</li>
+  <li>Create a WordPress page called “Archive” and paste the following shortcode: <code>[archivist template="podcast" query="post_type=podcast"]</code>.&nbsp;Done!</li>
+</ol>
+
+<h2 id="example-template">Example&nbsp;Template</h2>
+
+<p><strong>Before</strong></p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;table&gt;</span>
+    <span class="tag">&lt;thead&gt;</span>
+        <span class="tag">&lt;th&gt;</span><span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;th&gt;</span>Date<span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;th&gt;</span>Title<span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;th&gt;</span>Duration<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/thead&gt;</span>
+<span class="tag">&lt;tbody&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p><strong>Element</strong></p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">podcast_archive_element</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">thumbnail</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">'</span><span class="content">[podlove-episode field=&quot;image&quot;]</span><span class="delimiter">'</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">date</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">release_date</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>%DATE|d.m.Y%<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">%PERMALINK%</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;strong&gt;</span>%TITLE%<span class="tag">&lt;/strong&gt;</span><span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;br&gt;</span>
+        [podlove-episode field=&quot;subtitle&quot;]
+    <span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">duration</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        [podlove-episode field=&quot;duration&quot;]
+    <span class="tag">&lt;/td&gt;</span>
+<span class="tag">&lt;/tr&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p><strong>After</strong></p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>    <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p><strong>Custom&nbsp;<span class="caps">CSS</span></strong></p>
+
+<div class="highlight css "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="class">.archivist_wrapper</span> <span class="class">.permalink</span> {
+    <span class="key">font-weight</span>: <span class="value">bold</span>;
+}
+
+<span class="class">.archivist_wrapper</span> <span class="type">td</span> {
+    <span class="key">vertical-align</span>: <span class="value">top</span>;
+}
+
+<span class="class">.archivist_wrapper</span> <span class="type">img</span> {
+    <span class="key">padding</span>: <span class="float">5px</span>;
+    <span class="key">height</span>: <span class="float">64px</span>;
+    <span class="key">width</span>: <span class="float">64px</span>;
+}
+
+<span class="class">.podcast_archive_element</span> <span class="class">.thumbnail</span> {
+    <span class="key">width</span>: <span class="float">64px</span>;
+    <span class="key">padding</span>: <span class="float">5px</span> <span class="important">!important</span>;
+}</pre></td>
+</tr></table>
+</div>
+
+    </div>
+
+    
+  </div>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '/assets/js/vendor/zepto' : '/assets/js/vendor/jquery') +
+  '.js><\/script>')
+  </script>&nbsp;<script src="/assets/js/foundation/foundation.js"></script>
+  <script src="/assets/js/foundation/foundation-topbar.js"></script>&nbsp;<script>
+  $(document).foundation();
+  </script>
+
+</body>
+</html>
