@@ -95,6 +95,33 @@
 
 <p>Yes. The Migration assistant only <em>looks</em> at your existing data, it <em>does not change anything</em>. Even when you start the migration, all new episodes will be created <em>pending</em>, meaning you can preview them to check if everything looks as expected — while your old system still works like before. Only when you have verified that everything looks fine you hit the switch which turns off all old posts and publishes all the new episodes. Even at this point your old posts still exist — only they are not accessible by the&nbsp;public.</p>
 
+<h2 id="feeds">Feeds</h2>
+
+<p>Your feed URLs will probably change. Depending on your setup you need to adjust some&nbsp;settings.</p>
+
+<h3 id="feedburner-or-other-feed-proxies">Feedburner (or other feed&nbsp;proxies)</h3>
+
+<p>If you are using Feedburner, your public feed <span class="caps">URL</span> will stay the same (something like&nbsp;<code>http://feeds.feedburner.com/my-podcast</code>).
+However, you need to tell Feedburner the new internal feed <span class="caps">URL.</span> You can find it in&nbsp;<code>Podlove &gt; Podcast Feeds: "Subscribe URL"</code>.</p>
+
+<p><a href="/assets/images/migration/update_feedburner.jpg" class="th radius">
+	<img src="/assets/images/migration/update_feedburner.jpg" />
+</a></p>
+
+<h3 id="publishing-the-feed-directly">Publishing the Feed&nbsp;directly</h3>
+
+<p>If you are using no feed proxy, all clients are now subscribed to the wrong feed&nbsp;<span class="caps">URL.</span>
+The only way to fix this is to add a permanent redirect from the old <span class="caps">URL</span> to the new&nbsp;one.
+If you feel comfortable around <code>.htaccess</code> files, feel free to add it&nbsp;yourself.
+Alternatively, there is an interface to manage redirects in&nbsp;<code>Podlove &gt; Expert Settings</code>.
+Add your old feed <span class="caps">URL</span> into the “From <span class="caps">URL</span>” column and the new feed <span class="caps">URL</span> into the “To <span class="caps">URL</span>” column, like&nbsp;so:</p>
+
+<p><a href="/assets/images/migration/edit_redirects.jpg" class="th radius">
+	<img src="/assets/images/migration/edit_redirects.jpg" />
+</a></p>
+
+<p>Hit “Save Changes” and browse to the old feed <span class="caps">URL.</span> It should now redirect you to the new feed&nbsp;<span class="caps">URL.</span></p>
+
     </div>
 
     
@@ -103,7 +130,7 @@
         
             <p>↑ <a href="/publisher/">Back to Podlove&nbsp;Publisher</a></p>
         
-        <ol class="toc"><li><a href="#activating-the-assistant-module">Activating the Assistant&nbsp;Module</a></li><li><a href="#the-migration">The&nbsp;Migration</a></li><li><a href="#will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</a></li></ol>
+        <ol class="toc"><li><a href="#activating-the-assistant-module">Activating the Assistant&nbsp;Module</a></li><li><a href="#the-migration">The&nbsp;Migration</a></li><li><a href="#will-my-podcast-work-while-i-try-to-migrate">Will my podcast work while I try to&nbsp;migrate?</a></li><li><a href="#feeds">Feeds</a></li></ol>
       </div>
     
   </div>
