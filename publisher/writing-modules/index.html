@@ -124,10 +124,8 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
 17
 18
 19
-20
 </pre></td>
-  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span> 
-<span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">PodloveWebPlayer</span>;
+  <td class="code"><pre><span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">PodloveWebPlayer</span>;
 
 <span class="keyword">class</span> <span class="class">Podlove_Web_Player</span> <span class="keyword">extends</span> \<span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">Base</span> {
 
@@ -146,6 +144,53 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
     }
 
 }</pre></td>
+</tr></table>
+</div>
+
+<h2 id="hooks">Hooks</h2>
+
+<h3 id="activation">Activation</h3>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_activated</span><span class="delimiter">'</span></span>, <span class="local-variable">$activated_module</span> );
+do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_activated_</span><span class="delimiter">'</span></span> . <span class="local-variable">$activated_module</span> );</pre></td>
+</tr></table>
+</div>
+
+<h3 id="deactivation">Deactivation</h3>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_deactivated</span><span class="delimiter">'</span></span>, <span class="local-variable">$deactivated_module</span> );
+do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_deactivated_</span><span class="delimiter">'</span></span> . <span class="local-variable">$deactivated_module</span> );</pre></td>
+</tr></table>
+</div>
+
+<h3 id="usage">Usage</h3>
+
+<p>Use the second hook if possible, like&nbsp;this:</p>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>add_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_activated_podlove_web_player</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>( <span class="local-variable">$module_name</span> ) {
+    <span class="comment">// activation code</span>
+} );
+
+add_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_deactivated_podlove_web_player</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>( <span class="local-variable">$module_name</span> ) {
+    <span class="comment">// deactivation code</span>
+} );</pre></td>
 </tr></table>
 </div>
 
@@ -185,10 +230,8 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
 12
 13
 14
-15
 </pre></td>
-  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span>
-<span class="comment">// register options in load()</span>
+  <td class="code"><pre><span class="comment">// register options in load()</span>
 <span class="local-variable">$this</span>-&gt;register_option( <span class="string"><span class="delimiter">'</span><span class="content">my setting</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>, <span class="predefined">array</span>(
     <span class="string"><span class="delimiter">'</span><span class="content">label</span><span class="delimiter">'</span></span>       =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">my setting</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
     <span class="string"><span class="delimiter">'</span><span class="content">description</span><span class="delimiter">'</span></span> =&gt; __( <span class="string"><span class="delimiter">'</span><span class="content">yada yada yada</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span> ),
@@ -213,7 +256,7 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
         
             <p>↑ <a href="/publisher/">Back to Podlove&nbsp;Publisher</a></p>
         
-        <ol class="toc"><li><a href="#creating-a-module">Creating A&nbsp;Module</a></li><li><a href="#naming-conventions">Naming&nbsp;Conventions</a></li><li><a href="#options">Options</a></li></ol>
+        <ol class="toc"><li><a href="#creating-a-module">Creating A&nbsp;Module</a></li><li><a href="#naming-conventions">Naming&nbsp;Conventions</a></li><li><a href="#hooks">Hooks</a></li><li><a href="#options">Options</a></li></ol>
       </div>
     
   </div>
