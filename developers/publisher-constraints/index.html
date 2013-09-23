@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Publisher: Constraints</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/publisher/migration/">Migration</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+            
+          </ul>
+        </li>        
+        <li class="has-dropdown">
+          <a href="/developers/">Developers</a>
+          <ul class="dropdown">
+            <li><a href="/developers/">Podlove&nbsp;Development</a></li>
+            
+              <li><a href="/developers/publisher-constraints/">Publisher:&nbsp;Constraints</a></li>
+            
+              <li><a href="/developers/publisher-modules/">Publisher: Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Publisher:&nbsp;Constraints</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="content row">
+
+    <div class="small-12 large-8 columns">
+      <h1 id="not-yet-released"><span class="caps">NOT</span> <span class="caps">YET</span>&nbsp;<span class="caps">RELEASED</span></h1>
+
+<p>Constraints are still work in progress and not yet part of the master branch. To follow the development, please visit the <a href="https://github.com/podlove/podlove-publisher/tree/constraint">constraint branch</a>.</p>
+
+<h1 id="constraints--validations">Constraints <span class="amp">&amp;</span>&nbsp;Validations</h1>
+
+<p>Constraints and Validations are ways for the Publisher to verify the integrity of the whole system. The goal is to regularly check relevant system components. The user should have an overview over all components and their status. If something is not configured perfectly, there should be detailed instructions for the user to improve the&nbsp;situation.</p>
+
+<p>Developers and module writers are encouraged to add their own constraints to check the integrity of their modules. This document is a guide to create&nbsp;constraints.</p>
+
+<h2 id="what-is-a-good-constraint">What is a good&nbsp;Constraint?</h2>
+
+<p>Constraints should check <em>one</em> thing at a time. So “Enclosure Mime Type is Correct” is a good constraint; “The files are ok” is much less useful one. Try to validate one attribute of an entity at a time unless you need to verify attribute relationships. However, keep the possible constraint-violation causes in mind. Don’t create a bunch of constraints when the cause for all of them are&nbsp;identical.</p>
+
+<h2 id="the-constraint-class">The Constraint&nbsp;Class</h2>
+
+<p>A Constraintclass must inherit from <code>Podlove\Constraint\Constraint</code>. The class constant <code>SEVERITY</code> defines the severity in case of a violation. Those are the available&nbsp;severities:</p>
+
+<ul>
+  <li><code>Constraint::SEVERITY_WARNING</code>: Something is not quite right. Important services are probably available but the issue should be&nbsp;adressed.</li>
+  <li><code>Constraint::SEVERITY_CRITICAL</code>: Must be solved as soon as&nbsp;possible.</li>
+</ul>
+
+<p>The class must implement both methods <code>the_title</code> and <code>the_description</code>. <code>the_title</code> should be plain text and communicate the violation. <code>the_description</code> outputs a description of the constraint violation. It should address user directly, explain what’s wrong and should contain steps to resolve the issue. It may contain <span class="caps">HTML</span> and should be wrapped in <code>&lt;p&gt;</code>&nbsp;tags.</p>
+
+<p>The heart of the implementation is the <code>isValid</code> method. It contains the actial check for validity and must return a boolean response. You will be verifying some kind of entity which will be available via the variable&nbsp;<code>$this-&gt;resource</code>.</p>
+
+<p>Have a look at the following example&nbsp;implementation:</p>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td>
+  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span>
+<span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">MyModule</span>;
+
+<span class="keyword">use</span> <span class="constant">Podlove</span>\<span class="constant">Constraint</span>\<span class="constant">Constraint</span>;
+
+<span class="keyword">class</span> <span class="class">UrlIsValid</span> <span class="keyword">extends</span> <span class="constant">Constraint</span> {
+    <span class="keyword">const</span> <span class="constant">SEVERITY</span> = <span class="constant">Constraint</span>::<span class="constant">SEVERITY_CRITICAL</span>;
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">the_title</span>() {
+        <span class="predefined">echo</span> __(<span class="string"><span class="delimiter">'</span><span class="content">Url is not valid.</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span>);
+    }
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">the_description</span>() {
+        <span class="local-variable">$url</span> = <span class="local-variable">$this</span>-&gt;<span class="predefined-type">resource</span>-&gt;getUrl();
+        <span class="local-variable">$edit_url</span> = admin_url(<span class="string"><span class="delimiter">'</span><span class="content">admin.php?page=your_module_page</span><span class="delimiter">'</span></span>);
+        <span class="inline-delimiter">?&gt;</span>
+        <span class="tag">&lt;p&gt;</span>
+            <span class="inline-delimiter">&lt;?php</span> <span class="predefined">echo</span> <span class="predefined">sprintf</span>(
+                __(<span class="string"><span class="delimiter">'</span><span class="content">The url %s is not valid.</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span>),
+                <span class="string"><span class="delimiter">'</span><span class="content">&lt;a href=&quot;</span><span class="delimiter">'</span></span> . <span class="local-variable">$url</span> . <span class="string"><span class="delimiter">'</span><span class="content">&quot;&gt;</span><span class="delimiter">'</span></span> . <span class="local-variable">$url</span> . <span class="string"><span class="delimiter">'</span><span class="content">&lt;/a&gt;</span><span class="delimiter">'</span></span>
+            );
+            <span class="inline-delimiter">?&gt;</span>
+        <span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;p&gt;</span>
+            <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span></span><span class="inline-delimiter">&lt;?php</span> <span class="predefined">echo</span> <span class="local-variable">$edit_url</span> <span class="inline-delimiter">?&gt;</span><span class="string"><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="inline-delimiter">&lt;?php</span> <span class="predefined">echo</span> __(<span class="string"><span class="delimiter">'</span><span class="content">Change url setting</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">podlove</span><span class="delimiter">'</span></span>); <span class="inline-delimiter">?&gt;</span>
+            <span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/p&gt;</span>
+        <span class="inline-delimiter">&lt;?php</span>
+    }
+
+    public function isValid() {
+        return $this-<span class="error">&gt;</span>resource-<span class="error">&gt;</span>isUrlValid();
+    }
+}</pre></td>
+</tr></table>
+</div>
+
+<h2 id="setting-up-the-validatable-entity">Setting up the validatable&nbsp;Entity</h2>
+
+<p>Your validatable entity must implement the <code>Validatable</code> interface. This requires the implementation of <code>constraint($constraintClassName)</code> for adding a constraint to the entity and <code>validate</code> for validating all constraints. You can probably just copy the following&nbsp;implementation:</p>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td>
+  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span>
+<span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">MyModule</span>;
+
+<span class="keyword">use</span> <span class="constant">Podlove</span>\<span class="constant">Constraint</span>\<span class="constant">Validatable</span>;
+
+<span class="keyword">class</span> <span class="class">MyEntity</span> <span class="keyword">implements</span> <span class="constant">Validatable</span> {
+    
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="local-variable">$constraints</span> = <span class="predefined">array</span>();
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <span class="function">constraint</span>(<span class="local-variable">$constraintClassName</span>) {
+        <span class="predefined-constant">self</span>::<span class="local-variable">$constraints</span>[] = <span class="local-variable">$constraintClassName</span>;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">validate</span>() {
+        <span class="keyword">foreach</span> (<span class="predefined-constant">self</span>::<span class="local-variable">$constraints</span> <span class="keyword">as</span> <span class="local-variable">$constraintClassName</span>) {
+            <span class="local-variable">$constraint</span> = <span class="keyword">new</span> <span class="local-variable">$constraintClassName</span>(<span class="local-variable">$this</span>);
+            <span class="local-variable">$constraint</span>-&gt;validate();
+        }
+    }
+
+}
+
+<span class="constant">MyEntity</span>::constraint( <span class="string"><span class="delimiter">'</span><span class="content">\P</span><span class="content">odlove</span><span class="content">\M</span><span class="content">odules</span><span class="content">\M</span><span class="content">yModule</span><span class="content">\U</span><span class="content">rlIsValid</span><span class="delimiter">'</span></span> );</pre></td>
+</tr></table>
+</div>
+
+<p>The last line in the example actually registers the constraint for the&nbsp;entity.</p>
+
+<p>If you are writing a module, you don’t <em>need</em> to create a separate entity. Your module class itself may implement the <code>Validatable</code> interface. However, once the module class becomes unwieldy, you may consider to extract entities and register constraints for&nbsp;them.</p>
+
+<h2 id="executing-validations">Executing&nbsp;Validations</h2>
+
+<p>The constraint is registered. However, you still need to kick off the actual validation. You need to decide when it’s a good time to validate. Basically, you want to revalidate whenever your entities or configs change and there is a chance that something might have gone wrong. It is <em>not</em> good practice to validate on each&nbsp;request!</p>
+
+<p>If you are just validating module settings, a hook on the modules settings page might be a good&nbsp;place:</p>
+
+<div class="highlight php "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="inline-delimiter">&lt;?php</span>
+<span class="keyword">namespace</span> <span class="constant">Podlove</span>\<span class="constant">Modules</span>\<span class="constant">MyModule</span>;
+
+<span class="keyword">function</span> <span class="function">validate</span>() {
+    <span class="comment">// kick off validations registered on your module class</span>
+    <span class="constant">MyModule</span>::instance()-&gt;validate();
+    <span class="comment">// ... and/or fetch all entities and validate them</span>
+    <span class="keyword">foreach</span> (<span class="constant">MyEntity</span>::all() <span class="keyword">as</span> <span class="local-variable">$entity</span>) {
+        <span class="local-variable">$entity</span>-&gt;validate();
+    }
+}
+
+add_action(<span class="string"><span class="delimiter">'</span><span class="content">load-podlove_page_podlove_settings_modules_handle</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">\P</span><span class="content">odlove</span><span class="content">\M</span><span class="content">odules</span><span class="content">\M</span><span class="content">yModule</span><span class="content">\v</span><span class="content">alidate</span><span class="delimiter">'</span></span>);</pre></td>
+</tr></table>
+</div>
+
+    </div>
+
+    
+      <div class="toc_wrapper small-12 large-4 columns">
+        <h3>Publisher:&nbsp;Constraints</h3>
+        
+            <p>↑ <a href="/developers/">Back to&nbsp;Developers</a></p>
+        
+        <ol class="toc"><li><a href="#what-is-a-good-constraint">What is a good&nbsp;Constraint?</a></li><li><a href="#the-constraint-class">The Constraint&nbsp;Class</a></li><li><a href="#setting-up-the-validatable-entity">Setting up the validatable&nbsp;Entity</a></li><li><a href="#executing-validations">Executing&nbsp;Validations</a></li></ol>
+      </div>
+    
+  </div>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '/assets/js/vendor/zepto' : '/assets/js/vendor/jquery') +
+  '.js><\/script>')
+  </script>&nbsp;<script src="/assets/js/foundation/foundation.js"></script>
+  <script src="/assets/js/foundation/foundation-topbar.js"></script>&nbsp;<script>
+  $(document).foundation();
+  </script>
+
+</body>
+</html>
