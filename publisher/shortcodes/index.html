@@ -125,11 +125,32 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
 
 <p><code>[podlove-contributors]</code></p>
 
-<p>Lists all contributors. Requires “Contributors”&nbsp;module.</p>
+<p>Lists all contributors of the current episode. If used on a non-episode page, it lists all existing contributors with at least one contribution to an episode. Requires “Contributors”&nbsp;module.</p>
 
 <h3 id="parameters-2">Parameters</h3>
 
-<p><strong>separator:</strong> <em>(optional)</em> Default: “,&nbsp;“</p>
+<p>For&nbsp;lists:</p>
+
+<ul>
+  <li><strong>style</strong>: Choose between predefined styles. “table” provides a detailed view of your contributors. “list” is a compact, comma separated list of names. Default:&nbsp;“table”</li>
+  <li><strong>avatars</strong>: One of “yes”, “no”. Display avatars in list views or not. Default:&nbsp;“yes”</li>
+</ul>
+
+<p>For single contributor&nbsp;avatars:</p>
+
+<ul>
+  <li><strong>id</strong>: Specify a contributor id to display a specific contributor&nbsp;avatar.</li>
+  <li><strong>avatarsize</strong>: Specify avatar size in pixel for single contributors. Default:&nbsp;50</li>
+  <li><strong>align</strong>: One of “left”, “right”, “none”. Align contributor. Default:&nbsp;none</li>
+  <li><strong>caption</strong>: Optional caption for contributor&nbsp;avatars.</li>
+  <li><strong>role</strong>: Filter lists by role. Default:&nbsp;“all”</li>
+</ul>
+
+<p>For both lists and single&nbsp;views:</p>
+
+<ul>
+  <li><strong>linkto</strong>: Links contributor name to the service if available. One of “none”, “publicemail”, “www”, “adn”, “twitter”, “facebook”, “amazonwishlist”.  Default:&nbsp;“none”</li>
+</ul>
 
 <h2 id="templates">Templates</h2>
 
