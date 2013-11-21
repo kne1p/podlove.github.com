@@ -36,9 +36,9 @@
             
               <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
             
-              <li><a href="/publisher/migration/">Migration</a></li>
+              <li><a href="/publisher/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
             
-              <li><a href="/publisher/shortcodes/">Shortcodes</a></li>
+              <li><a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a></li>
             
           </ul>
         </li>        
@@ -75,27 +75,75 @@
     <div class="large-12 columns">
       <p>The WordPress Podlove Podcast Publisher is a workflow-oriented solution for serious podcasters that want to save time and get full control over their Podcast publishing process, their feeds and the integrity of their&nbsp;publication.</p>
 
-<p><a href="http://wordpress.org/extend/plugins/podlove-podcasting-plugin-for-wordpress/" class="button success">Download Podlove&nbsp;Publisher</a></p>
+<p><a href="http://wordpress.org/extend/plugins/podlove-podcasting-plugin-for-wordpress/" class="button">Download Podlove&nbsp;Publisher</a></p>
 
-<p>Visit <a href="http://podlove.org/">podlove.org</a> for updates on everything happening in the Podlove&nbsp;universe.</p>
+<h2 id="getting-started">Getting&nbsp;Started</h2>
 
-<h2 id="guides">Guides</h2>
+<p>You need <a href="http://wordpress.org/">WordPress</a> running on your web server. Download the <a href="http://wordpress.org/plugins/podlove-podcasting-plugin-for-wordpress/">Podlove Podcast Publisher</a> plugin, unzip it, put it into the WordPress plugin directory, and activate it. If you are new to WordPress, you may find the <a href="http://codex.wordpress.org/Managing_Plugins#Installing_Plugins">Installing Plugins</a> instructions&nbsp;helpful.</p>
+
+<h3 id="configuring-basics">Configuring&nbsp;Basics</h3>
+
+<p>A <em>Podlove</em> entry appears in the menu. Go to <code>Podlove → Podcast Settings</code> to start the setup. Fill in the <em>Description</em> fields (title, subtitle and summary) for your podcast. Then scroll down to the <em>Media</em> section. Here you are asked for an <em>Upload Location</em>. What is the upload&nbsp;location?</p>
+
+<p>Publishing episodes and serving files are not necessarily connected. The Publisher focuses on the former while you are still responsible for uploading your media files to a server (which may or may not be identical to the server running WordPress). The Publisher has expectations concerning your&nbsp;files.</p>
+
+<p><strong>Expectation 1: Assets for an episode share the same file name.</strong> Files related to your episodes are called <em>Assets</em>. The Publisher needs to keep track of them, so it introduces the convention that all files for one episode must share the same file name. Let’s say you publish an episode using mp3, m4a and a cover image. Your files may look like&nbsp;this:</p>
+
+<ul>
+  <li>ep001.mp3</li>
+  <li>ep001.m4a</li>
+  <li>ep001.jpg</li>
+</ul>
+
+<p><code>ep001</code> is your <em>file slug</em>. Its format is totally up to you. I may be numeric (<code>001</code>), text (<code>my-first-episode</code>) or mixed (<code>ep001</code>). The only requirement is that it is the same for all&nbsp;assets.</p>
+
+<p><strong>Expectation 2: All files are in the same directory.</strong> If your first episode is available at http://www.example.com/ep001.mp3 then your second episode should be available at http://www.example.com/ep002.mp3 and <strong>not</strong> at http://www.example.com/foo/ep002.mp3 or&nbsp;http://foo.example.com/ep002.mp3.</p>
+
+<p>This directory is your Upload Location. Using the example above, it is <code>http://www.example.com/</code>. Enter it in the settings form and make sure that your files are there. You can fill out the rest of the form but you don’t have to. You can always come back to it&nbsp;later.</p>
+
+<p>Go to the next menu entry, the <code>Podlove → Episode Assets</code>. As mentioned above, assets are all files related to your episodes. Here you define what kind of files you want to publish. That way the Publisher <em>knows</em> about your files and can ensure their existence and validity. Click on “Add New” to create&nbsp;one.</p>
+
+<p>Select the “audio” asset type and one of the file formats you are publishing in, like mp3. You can leave the rest of the form and <em>Save Changes</em>. If you have more formats, please add them&nbsp;likewise.</p>
+
+<p>The last step of preparation is setting up a feed for your listeners to subscribe. Go to the next menu entry, <code>Podlove → Podcast Feeds</code> and click on “Add New”. Select one of the media file assets you just created, assign a title (example: “<span class="caps">MP3</span> Feed) and an url slug (example: “mp3”). You can ignore the rest and <em>Save Changes</em>. If you created multiple formats, you may add the other feeds likewise. You are now ready to publish your first&nbsp;episode!</p>
+
+<h3 id="publishing-the-first-episode">Publishing the first&nbsp;Episode</h3>
+
+<p>You may have noticed already: There is an <em>Episodes</em> menu entry below <em>Posts</em>. This is where you manage your episodes. Go to <code>Episodes → Add New</code>. Enter a title and copy&amp;paste the following two shortcodes into the content field&nbsp;below:</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>[podlove-web-player]
+[podlove-episode-downloads]</pre></td>
+</tr></table>
+</div>
+
+<p>Scroll down to the <em>Podcast Episode</em> box. Find the <em>Episode Media File Slug</em> field. Remember this? In the example above, the slug was <code>ep001</code>. If you already have files on your upload location, enter your&nbsp;slug.</p>
+
+<p>The table below contains all your assets. If you setup everything correctly, the Publisher will now have found the correct assets and indicate its satisfaction with one or more green checkmarks. Press <em>Publish</em> — Congratulations! You have published your first episode using the Podlove&nbsp;Publisher!</p>
+
+<h2 id="next-steps">Next&nbsp;Steps</h2>
+
+<p>Have a look at the guides&nbsp;section:</p>
 
 <ul>
 
-	<li>
-		<a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a>
-	</li>
+        <li>
+                <a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a>
+        </li>
 
-	<li>
-		<a href="/publisher/migration/">Migration</a>
-	</li>
+        <li>
+                <a href="/publisher/migration/">Migrating an existing Podcast to&nbsp;Podlove</a>
+        </li>
 
-	<li>
-		<a href="/publisher/shortcodes/">Shortcodes</a>
-	</li>
+        <li>
+                <a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a>
+        </li>
 
 </ul>
+
 
     </div>
 
