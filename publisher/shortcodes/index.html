@@ -79,7 +79,9 @@
 
 <p><code>[podlove-episode-downloads]</code>: Display downloads in a dropdown menu.<br />
 <code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available formats.<br />
-<code>[podlove-web-player]</code>: Display a web&nbsp;player.</p>
+<code>[podlove-web-player]</code>: Display a web player.<br />
+<code>[podlove-podcast-license]</code>: Display the podcast&nbsp;license.
+<code>[podlove-episode-license]</code>: Display the episode license (with fallback to podcast license if none is&nbsp;defined). </p>
 
 <h2 id="episode-data">Episode&nbsp;Data</h2>
 <p><code>[podlove-episode field="..."]</code></p>
@@ -134,6 +136,10 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
 <ul>
   <li><strong>style</strong>: Choose between predefined styles. “table” provides a detailed view of your contributors. “list” is a compact, comma separated list of names. Default:&nbsp;“table”</li>
   <li><strong>avatars</strong>: One of “yes”, “no”. Display avatars in list views or not. Default:&nbsp;“yes”</li>
+  <li><strong>role</strong>: Filter lists by role. Default:&nbsp;“all”</li>
+  <li><strong>donations</strong>: One of “yes”, “no”. Display flattr column in list view or not. Default:&nbsp;“no”</li>
+  <li><strong>round_avatars</strong>: One of “yes”, “no”. Circular avatars instead of default squared. Default:&nbsp;“no”</li>
+  <li><strong>show_role</strong>: One of “yes”, “no”. Display role in table view or not. Default:&nbsp;“yes”</li>
 </ul>
 
 <p>For single contributor&nbsp;avatars:</p>
@@ -143,7 +149,6 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
   <li><strong>avatarsize</strong>: Specify avatar size in pixel for single contributors. Default:&nbsp;50</li>
   <li><strong>align</strong>: One of “left”, “right”, “none”. Align contributor. Default:&nbsp;none</li>
   <li><strong>caption</strong>: Optional caption for contributor&nbsp;avatars.</li>
-  <li><strong>role</strong>: Filter lists by role. Default:&nbsp;“all”</li>
 </ul>
 
 <p>For both lists and single&nbsp;views:</p>
