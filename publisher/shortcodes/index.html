@@ -125,36 +125,23 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
 
 <h2 id="contributors">Contributors</h2>
 
-<p><code>[podlove-contributors]</code></p>
+<p><code>[podlove-contributor-list]</code></p>
 
 <p>Lists all contributors of the current episode. If used on a non-episode page, it lists all existing contributors with at least one contribution to an episode. Requires “Contributors”&nbsp;module.</p>
 
+<blockquote>
+  <p><strong><span class="caps">WARNING</span></strong> <code>[podlove-contributors]</code> is <em>deprecated</em>. Please replace it with a <code>[podlove-contributor-list]</code> shortcode if you are using&nbsp;it.</p>
+</blockquote>
+
 <h3 id="parameters-2">Parameters</h3>
 
-<p>For&nbsp;lists:</p>
-
 <ul>
-  <li><strong>style</strong>: Choose between predefined styles. “table” provides a detailed view of your contributors. “list” is a compact, comma separated list of names. Default:&nbsp;“table”</li>
-  <li><strong>avatars</strong>: One of “yes”, “no”. Display avatars in list views or not. Default:&nbsp;“yes”</li>
-  <li><strong>role</strong>: Filter lists by role. Default:&nbsp;“all”</li>
-  <li><strong>donations</strong>: One of “yes”, “no”. Display flattr column in list view or not. Default:&nbsp;“no”</li>
-  <li><strong>round_avatars</strong>: One of “yes”, “no”. Circular avatars instead of default squared. Default:&nbsp;“no”</li>
-  <li><strong>show_role</strong>: One of “yes”, “no”. Display role in table view or not. Default:&nbsp;“yes”</li>
-</ul>
-
-<p>For single contributor&nbsp;avatars:</p>
-
-<ul>
-  <li><strong>id</strong>: Specify a contributor id to display a specific contributor&nbsp;avatar.</li>
-  <li><strong>avatarsize</strong>: Specify avatar size in pixel for single contributors. Default:&nbsp;50</li>
-  <li><strong>align</strong>: One of “left”, “right”, “none”. Align contributor. Default:&nbsp;none</li>
-  <li><strong>caption</strong>: Optional caption for contributor&nbsp;avatars.</li>
-</ul>
-
-<p>For both lists and single&nbsp;views:</p>
-
-<ul>
-  <li><strong>linkto</strong>: Links contributor name to the service if available. One of “none”, “publicemail”, “www”, “adn”, “twitter”, “facebook”, “amazonwishlist”.  Default:&nbsp;“none”</li>
+  <li><strong>preset:</strong> “table”, “list” or “comma separated”. Default:&nbsp;“table”</li>
+  <li><strong>title:</strong> Optional table header title. Default:&nbsp;none</li>
+  <li><strong>avatars:</strong> “yes” or “no”. Display avatars. Default:&nbsp;“yes”</li>
+  <li><strong>role:</strong> Filter lists by role. Default:&nbsp;“all”</li>
+  <li><strong>donations:</strong> “yes” or “no”. Display donation column. Default:&nbsp;“no”</li>
+  <li><strong>linkto:</strong> One of “none”, “publicemail”, “www”, “adn”, “twitter”, “facebook”, “amazonwishlist”. Links contributor name to the service if available. Default:&nbsp;“none”</li>
 </ul>
 
 <h2 id="templates">Templates</h2>
