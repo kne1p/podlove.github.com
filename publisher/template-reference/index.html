@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Template Reference</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/publisher/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a></li>
+            
+              <li><a href="/publisher/template-reference/">Template&nbsp;Reference</a></li>
+            
+          </ul>
+        </li>        
+        <li class="has-dropdown">
+          <a href="/developers/">Developers</a>
+          <ul class="dropdown">
+            <li><a href="/developers/">Podlove&nbsp;Development</a></li>
+            
+              <li><a href="/developers/publisher-constraints/">Publisher:&nbsp;Constraints</a></li>
+            
+              <li><a href="/developers/publisher-modules/">Publisher: Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Template&nbsp;Reference</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="content row">
+
+    <div class="large-12 columns">
+      
+<h4 id="episode">Episode</h4>
+
+<table>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.explicit
+				</code>
+			</td>
+			<td>
+				<strong>
+					Explicit&nbsp;status
+				</strong>
+				<p>“yes”, “no” or&nbsp;“clean”</p>
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.url
+				</code>
+			</td>
+			<td>
+				<strong>
+					Episode&nbsp;<span class="caps">URL</span>
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.duration
+				</code>
+			</td>
+			<td>
+				<strong>
+					Episode&nbsp;duration
+				</strong>
+				<p>Use <code>duration("full")</code> to include&nbsp;milliseconds.</p>
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.meta
+				</code>
+			</td>
+			<td>
+				<strong>
+					Access a single meta&nbsp;value
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.metas
+				</code>
+			</td>
+			<td>
+				<strong>
+					Access a list of meta&nbsp;values
+				</strong>
+				<p>Example:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+  {% for meta in episode.metas(&quot;mymetakey&quot;) %}
+    <span class="tag">&lt;li&gt;</span>{{ meta }}<span class="tag">&lt;/li&gt;</span>
+  {% endfor %}
+<span class="tag">&lt;/ul&gt;</span>
+
+{% for meta in episode.metas(&quot;mymetakey&quot;) %}
+  {{ meta }}{% if not loop.last %}, {% endif %}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.files
+				</code>
+			</td>
+			<td>
+				<strong>
+					List of episode&nbsp;files
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.contributors
+				</code>
+			</td>
+			<td>
+				<strong>
+					List of episode&nbsp;contributors
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.chapters
+				</code>
+			</td>
+			<td>
+				<strong>
+					List of episode&nbsp;chapters
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					episode.license
+				</code>
+			</td>
+			<td>
+				<strong>
+					Episode&nbsp;license
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+</table>
+
+<h4 id="chapter">Chapter</h4>
+
+<table>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					chapter.title
+				</code>
+			</td>
+			<td>
+				<strong>
+					Chapter&nbsp;title
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					chapter.link
+				</code>
+			</td>
+			<td>
+				<strong>
+					Chapter&nbsp;link
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					chapter.image
+				</code>
+			</td>
+			<td>
+				<strong>
+					Chapter&nbsp;image
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<code>
+					chapter.time
+				</code>
+			</td>
+			<td>
+				<strong>
+					Chapter&nbsp;time
+				</strong>
+				
+
+			</td>
+		</tr>
+	
+</table>
+
+
+    </div>
+
+    
+  </div>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '/assets/js/vendor/zepto' : '/assets/js/vendor/jquery') +
+  '.js><\/script>')
+  </script>&nbsp;<script src="/assets/js/foundation/foundation.js"></script>
+  <script src="/assets/js/foundation/foundation-topbar.js"></script>&nbsp;<script>
+  $(document).foundation();
+  </script>
+
+</body>
+</html>

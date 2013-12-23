@@ -1,0 +1,223 @@
+Crashlog created at 2013-06-07 12:38:51 +0200
+
+===== MESSAGE:
+
+Errno::ENOENT: No such file or directory - output/CNAME/
+
+===== COMPILATION STACK:
+
+  - [item]   /CNAME/ (rep default)
+
+===== STACK TRACE:
+
+  0. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1442:in `initialize'
+  1. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1442:in `open'
+  2. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1442:in `block in copy_file'
+  3. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1441:in `open'
+  4. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1441:in `copy_file'
+  5. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:547:in `copy_file'
+  6. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:467:in `block in cp'
+  7. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1620:in `block in fu_each_src_dest'
+  8. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1635:in `fu_each_src_dest0'
+  9. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:1618:in `fu_each_src_dest'
+  10. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/fileutils.rb:466:in `cp'
+  11. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/result_data/item_rep.rb:146:in `write'
+  12. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/result_data/item_rep.rb:432:in `snapshot'
+  13. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/compilation/compiler.rb:385:in `compile_rep'
+  14. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/compilation/compiler.rb:339:in `block in compile_reps'
+  15. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/compilation/compiler.rb:332:in `loop'
+  16. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/compilation/compiler.rb:332:in `compile_reps'
+  17. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/compilation/compiler.rb:89:in `run'
+  18. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/base/source_data/site.rb:58:in `compile'
+  19. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/commands/compile.rb:325:in `run'
+  20. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/command_runner.rb:14:in `block in call'
+  21. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/error_handler.rb:70:in `handle_while'
+  22. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  23. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/command_runner.rb:13:in `call'
+  24. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib/cri/command_dsl.rb:185:in `block in runner'
+  25. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
+  26. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
+  27. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
+  28. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib/cri/command.rb:262:in `run'
+  29. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli.rb:52:in `block in run'
+  30. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/error_handler.rb:70:in `handle_while'
+  31. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  32. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib/nanoc/cli.rb:50:in `run'
+  33. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/bin/nanoc:19:in `<top (required)>'
+  34. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/bin/nanoc:23:in `load'
+  35. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/bin/nanoc:23:in `<main>'
+  36. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/bin/ruby_noexec_wrapper:14:in `eval'
+  ... 39 more lines omitted. See full crash log for details.
+
+===== VERSION INFORMATION:
+
+nanoc 3.6.2 © 2007-2013 Denis Defreyne.
+Running ruby 2.0.0 (2013-02-24) on x86_64-darwin12.2.1 with RubyGems 2.0.3.
+
+===== SYSTEM INFORMATION:
+
+Darwin Pho-Ga.local 12.3.0 Darwin Kernel Version 12.3.0: Sun Jan  6 22:37:10 PST 2013; root:xnu-2050.22.13~1/RELEASE_X86_64 x86_64
+
+===== INSTALLED GEMS:
+
+  adsf 1.1.1
+  builder 3.2.0
+  bundler 1.3.2
+  chunky_png 1.2.8
+  coderay 1.0.9
+  colored 1.2
+  compass 0.12.2
+  cri 2.3.0
+  fssm 0.2.10
+  kramdown 1.0.1
+  mime-types 1.22
+  nanoc 3.6.2
+  nokogiri 1.5.9
+  rack 1.5.2
+  rdiscount 2.0.7.1
+  rubypants 0.2.0
+  sass 3.2.7
+  typogruby 1.0.15
+
+===== ENVIRONMENT:
+
+Apple_PubSub_Socket_Render => "/tmp/launch-iLTxx7/Render"
+Apple_Ubiquity_Message => "/tmp/launch-usOqVX/Apple_Ubiquity_Message"
+BUNDLE_BIN_PATH => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global/gems/bundler-1.3.2/bin/bundle"
+BUNDLE_GEMFILE => "/Users/ericteubert/code/podlove.github.com/Gemfile"
+BUNDLE_ORIG_MANPATH => "/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:"
+COMMAND_MODE => "unix2003"
+DISPLAY => "/tmp/launch-9f8uEe/org.macosforge.xquartz:0"
+EDITOR => "s"
+GEM_HOME => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0"
+GEM_PATH => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0:/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global"
+HOME => "/Users/ericteubert"
+IRBRC => "/Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/.irbrc"
+LANG => "de_DE.UTF-8"
+LOGNAME => "ericteubert"
+MANPATH => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/kramdown-1.0.1/man:/usr/local/man:/usr/local/mysql/man:/usr/local/git/man"
+MY_RUBY_HOME => "/Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0"
+OLDPWD => "/Users/ericteubert/code/podlove"
+PATH => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/bin:/usr/local/heroku/bin:/usr/local/Cellar/php53/5.3.25/bin:/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global/bin:/Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/bin:/Users/ericteubert/.rvm/bin:/Applications/GitX.app/Contents/MacOS:/Users/ericteubert/bin:/Users/ericteubert/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin"
+PS1 => "\n%n: %10~ $(git_info_for_prompt)\n➜ "
+PWD => "/Users/ericteubert/code/podlove.github.com"
+RUBYOPT => "-I/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global/gems/bundler-1.3.2/lib -rbundler/setup"
+RUBY_VERSION => "ruby-2.0.0-p0"
+SECURITYSESSIONID => "186a6"
+SHELL => "/bin/zsh"
+SHLVL => "1"
+SSH_AUTH_SOCK => "/tmp/launch-aJCatM/Listeners"
+TERM => "xterm-256color"
+TERM_PROGRAM => "Apple_Terminal"
+TERM_PROGRAM_VERSION => "309"
+TERM_SESSION_ID => "40153EE6-C516-42AC-A6BB-4B73BBCBAACD"
+TMPDIR => "/var/folders/2m/pn4pdqwx1g78bf5fj0fvzn9h0000gq/T/"
+USER => "ericteubert"
+_ => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/bin/nanoc"
+_ORIGINAL_GEM_PATH => "/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0:/Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global"
+__CF_USER_TEXT_ENCODING => "0x1F7:0:0"
+__array_start => "1"
+_first => "1"
+_second => "2"
+escape_flag => "1"
+rvm_alias_expanded => ""
+rvm_bin_path => "/Users/ericteubert/.rvm/bin"
+rvm_debug_clr => "\e[35m"
+rvm_docs_type => ""
+rvm_error_clr => "\e[31m"
+rvm_gemstone_package_file => ""
+rvm_gemstone_url => ""
+rvm_hook => ""
+rvm_niceness => ""
+rvm_nightly_flag => ""
+rvm_notify_clr => "\e[32m"
+rvm_path => "/Users/ericteubert/.rvm"
+rvm_prefix => "/Users/ericteubert"
+rvm_proxy => ""
+rvm_quiet_flag => ""
+rvm_reset_clr => "\e(B\e[m"
+rvm_ruby_file => ""
+rvm_ruby_make => ""
+rvm_ruby_make_install => ""
+rvm_ruby_mode => ""
+rvm_script_name => ""
+rvm_sdk => ""
+rvm_silent_flag => ""
+rvm_version => "1.18.18 (stable)"
+rvm_warn_clr => "\e[33m"
+rvm_wrapper_name => ""
+
+===== GEMFILE.LOCK:
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    adsf (1.1.1)
+      rack (>= 1.0.0)
+    builder (3.2.0)
+    chunky_png (1.2.8)
+    coderay (1.0.9)
+    colored (1.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    cri (2.3.0)
+      colored (>= 1.2)
+    fssm (0.2.10)
+    kramdown (1.0.1)
+    mime-types (1.22)
+    nanoc (3.6.2)
+      cri (~> 2.3)
+    nokogiri (1.5.9)
+    rack (1.5.2)
+    rdiscount (2.0.7.1)
+    rubypants (0.2.0)
+    sass (3.2.7)
+    typogruby (1.0.15)
+      rubypants
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  adsf
+  builder
+  coderay
+  compass
+  kramdown
+  mime-types
+  nanoc
+  nokogiri
+  rdiscount
+  typogruby
+
+===== LOAD PATHS:
+
+  0. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib
+  1. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/typogruby-1.0.15/lib
+  2. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/rubypants-0.2.0/.
+  3. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/rdiscount-2.0.7.1/lib
+  4. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nokogiri-1.5.9/lib
+  5. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/nanoc-3.6.2/lib
+  6. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/mime-types-1.22/lib
+  7. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/kramdown-1.0.1/lib
+  8. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/cri-2.3.0/lib
+  9. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/lib
+  10. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/sass-3.2.7/lib
+  11. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/fssm-0.2.10/lib
+  12. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/colored-1.2/lib
+  13. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/coderay-1.0.9/lib
+  14. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/chunky_png-1.2.8/lib
+  15. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/builder-3.2.0/lib
+  16. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/adsf-1.1.1/lib
+  17. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0/gems/rack-1.5.2/lib
+  18. /Users/ericteubert/.rvm/gems/ruby-2.0.0-p0@global/gems/bundler-1.3.2/lib
+  19. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/site_ruby/2.0.0
+  20. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/site_ruby/2.0.0/x86_64-darwin12.2.1
+  21. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/site_ruby
+  22. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/vendor_ruby/2.0.0
+  23. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/vendor_ruby/2.0.0/x86_64-darwin12.2.1
+  24. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/vendor_ruby
+  25. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0
+  26. /Users/ericteubert/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/x86_64-darwin12.2.1
