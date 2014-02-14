@@ -76,16 +76,16 @@
 
     <div class="large-12 columns">
       
-<p><a id="podlove-class-asset"></a></p>
+<p><a id="podlove-class-podcast"></a></p>
 
-<h4 id="asset">Asset</h4>
+<h4 id="podcast">Podcast</h4>
 
 <table>
     
         <tr>
             <td valign="top">
                 <code>
-                    asset.title
+                    podcast.title
                 </code>
             </td>
             <td>
@@ -101,12 +101,12 @@
         <tr>
             <td valign="top">
                 <code>
-                    asset.downloadable
+                    podcast.subtitle
                 </code>
             </td>
             <td>
                 <strong>
-                    Is the asset&nbsp;downloadable?
+                    Subtitle
                 </strong>
                 
 <p></p>
@@ -117,17 +117,181 @@
         <tr>
             <td valign="top">
                 <code>
-                    asset.fileType
+                    podcast.summary
                 </code>
             </td>
             <td>
                 <strong>
-                    File&nbsp;type
+                    Summary
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.imageUrl
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Image&nbsp;<span class="caps">URL</span>
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.authorName
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Author&nbsp;name
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.ownerName
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Owner&nbsp;name
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.ownerEmail
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Owner&nbsp;email
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.publisherName
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Publisher&nbsp;name
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.publisherUrl
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Publisher&nbsp;<span class="caps">URL</span>
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.episodes
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Episodes
                 </strong>
                 
 <p>
-                        see <a href="#podlove-class-file_type">file_type</a>
+                        see <a href="#podlove-class-episode">episode</a>
                     </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.feeds
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Feeds
+                </strong>
+                
+<p>
+                        see <a href="#podlove-class-feed">feed</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.license
+                </code>
+            </td>
+            <td>
+                <strong>
+                    License
+                </strong>
+                
+<p>
+                        see <a href="#podlove-class-license">license</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.contributors
+                </code>
+            </td>
+            <td>
+                <strong>
+                    
+                </strong>
+                
+<p></p>
 
             </td>
         </tr>
@@ -444,154 +608,6 @@
     
 </table>
 
-<p><a id="podlove-class-file"></a></p>
-
-<h4 id="file">File</h4>
-
-<table>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    file.episode
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Episode related to this&nbsp;file
-                </strong>
-                
-<p>
-                        see <a href="#podlove-class-episode">episode</a>
-                    </p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    file.asset
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Asset related to this&nbsp;file
-                </strong>
-                
-<p>
-                        see <a href="#podlove-class-asset">asset</a>
-                    </p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    file.size
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Size in&nbsp;bytes
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    file.url
-                </code>
-            </td>
-            <td>
-                <strong>
-                    <span class="caps">URL</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-</table>
-
-<p><a id="podlove-class-license"></a></p>
-
-<h4 id="license">License</h4>
-
-<table>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    license.name
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Name
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    license.url
-                </code>
-            </td>
-            <td>
-                <strong>
-                    <span class="caps">URL</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    license.imageUrl
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Image&nbsp;<span class="caps">URL</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    license.html
-                </code>
-            </td>
-            <td>
-                <strong>
-                    <span class="caps">HTML</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-</table>
-
 <p><a id="podlove-class-chapter"></a></p>
 
 <h4 id="chapter">Chapter</h4>
@@ -754,6 +770,140 @@
     
 </table>
 
+<p><a id="podlove-class-asset"></a></p>
+
+<h4 id="asset">Asset</h4>
+
+<table>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    asset.title
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Title
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    asset.downloadable
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Is the asset&nbsp;downloadable?
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    asset.fileType
+                </code>
+            </td>
+            <td>
+                <strong>
+                    File&nbsp;type
+                </strong>
+                
+<p>
+                        see <a href="#podlove-class-file_type">file_type</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+</table>
+
+<p><a id="podlove-class-file"></a></p>
+
+<h4 id="file">File</h4>
+
+<table>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    file.episode
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Episode related to this&nbsp;file
+                </strong>
+                
+<p>
+                        see <a href="#podlove-class-episode">episode</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    file.asset
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Asset related to this&nbsp;file
+                </strong>
+                
+<p>
+                        see <a href="#podlove-class-asset">asset</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    file.size
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Size in&nbsp;bytes
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    file.url
+                </code>
+            </td>
+            <td>
+                <strong>
+                    <span class="caps">URL</span>
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+</table>
+
 <p><a id="podlove-class-file_type"></a></p>
 
 <h4 id="filetype">FileType</h4>
@@ -826,228 +976,6 @@
     
 </table>
 
-<p><a id="podlove-class-podcast"></a></p>
-
-<h4 id="podcast">Podcast</h4>
-
-<table>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.title
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Title
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.subtitle
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Subtitle
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.summary
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Summary
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.imageUrl
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Image&nbsp;<span class="caps">URL</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.authorName
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Author&nbsp;name
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.ownerName
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Owner&nbsp;name
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.ownerEmail
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Owner&nbsp;email
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.publisherName
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Publisher&nbsp;name
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.publisherUrl
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Publisher&nbsp;<span class="caps">URL</span>
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.episodes
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Episodes
-                </strong>
-                
-<p>
-                        see <a href="#podlove-class-episode">episode</a>
-                    </p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.feeds
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Feeds
-                </strong>
-                
-<p>
-                        see <a href="#podlove-class-feed">feed</a>
-                    </p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.license
-                </code>
-            </td>
-            <td>
-                <strong>
-                    License
-                </strong>
-                
-<p>
-                        see <a href="#podlove-class-license">license</a>
-                    </p>
-
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    podcast.contributors
-                </code>
-            </td>
-            <td>
-                <strong>
-                    
-                </strong>
-                
-<p></p>
-
-            </td>
-        </tr>
-    
-</table>
-
 <p><a id="podlove-class-contributor"></a></p>
 
 <h4 id="contributor">Contributor</h4>
@@ -1059,7 +987,7 @@
         <tr>
             <td valign="top">
                 <code>
-                    contributor.isPublic
+                    contributor.visible
                 </code>
             </td>
             <td>
@@ -1411,6 +1339,78 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
 <p>
                         see <a href="#podlove-class-episode">episode</a>
                     </p>
+
+            </td>
+        </tr>
+    
+</table>
+
+<p><a id="podlove-class-license"></a></p>
+
+<h4 id="license">License</h4>
+
+<table>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    license.name
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Name
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    license.url
+                </code>
+            </td>
+            <td>
+                <strong>
+                    <span class="caps">URL</span>
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    license.imageUrl
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Image&nbsp;<span class="caps">URL</span>
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    license.html
+                </code>
+            </td>
+            <td>
+                <strong>
+                    <span class="caps">HTML</span>
+                </strong>
+                
+<p></p>
 
             </td>
         </tr>
