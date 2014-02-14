@@ -34,13 +34,21 @@
           <ul class="dropdown">
             <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
             
-              <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
-            
-              <li><a href="/publisher/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
-            
               <li><a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a></li>
             
               <li><a href="/publisher/template-reference/">Template&nbsp;Reference</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/guides/">Guides</a>
+          <ul class="dropdown">
+            
+              <li><a href="/guides/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/guides/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
+            
+              <li><a href="/guides/understanding-templates/">Understanding&nbsp;Templates</a></li>
             
           </ul>
         </li>        
@@ -96,7 +104,7 @@
 <p>Directories, file names and class names are snake cased. Directories and file names are all lowercased, class names are <code>Camel_Snake_Cased</code>. The namespace is CamelCased.&nbsp;Example:</p>
 
 <div class="highlight plain "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -113,7 +121,7 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
 <h3 id="example-module-file">Example Module&nbsp;File</h3>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -160,7 +168,7 @@ Namespace:   \Podlove\Modules\PodloveWebPlayer</pre></td>
 <h3 id="activation">Activation</h3>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_activated</span><span class="delimiter">'</span></span>, <span class="local-variable">$activated_module</span> );
@@ -171,7 +179,7 @@ do_action( <span class="string"><span class="delimiter">'</span><span class="con
 <h3 id="deactivation">Deactivation</h3>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 </pre></td>
   <td class="code"><pre>do_action( <span class="string"><span class="delimiter">'</span><span class="content">podlove_module_was_deactivated</span><span class="delimiter">'</span></span>, <span class="local-variable">$deactivated_module</span> );
@@ -184,7 +192,7 @@ do_action( <span class="string"><span class="delimiter">'</span><span class="con
 <p>Use the second hook if possible, like&nbsp;this:</p>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -224,7 +232,7 @@ add_action( <span class="string"><span class="delimiter">'</span><span class="co
 <p>Right now there is no documentation on forms. Please look <a href="https://github.com/podlove/podlove-publisher/blob/master/lib/form/input/builder.php">into the form builder file</a> for possible&nbsp;arguments.</p>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -262,7 +270,9 @@ add_action( <span class="string"><span class="delimiter">'</span><span class="co
       <div class="toc_wrapper small-12 large-4 columns">
         <h3>Publisher: Writing&nbsp;Modules</h3>
         
-            <p>↑ <a href="/developers/">Back to&nbsp;Developers</a></p>
+          
+              <p>↑ <a href="/developers/">Back to&nbsp;Developers</a></p>
+          
         
         <ol class="toc"><li><a href="#creating-a-module">Creating A&nbsp;Module</a></li><li><a href="#naming-conventions">Naming&nbsp;Conventions</a></li><li><a href="#hooks">Hooks</a></li><li><a href="#options">Options</a></li></ol>
       </div>

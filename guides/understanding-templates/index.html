@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Podlove &raquo; Understanding Templates</title>
+
+  <link rel="stylesheet" href="/assets/css/normalize.css" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script src="/assets/js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+
+  <div id="navigation-container" class="contain-to-grid">
+
+  <nav class="top-bar">
+
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Podlove Documentation <span class="amp">&amp;</span>&nbsp;Guides</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a href="/publisher/">Publisher</a>
+          <ul class="dropdown">
+            <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
+            
+              <li><a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a></li>
+            
+              <li><a href="/publisher/template-reference/">Template&nbsp;Reference</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/guides/">Guides</a>
+          <ul class="dropdown">
+            
+              <li><a href="/guides/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/guides/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
+            
+              <li><a href="/guides/understanding-templates/">Understanding&nbsp;Templates</a></li>
+            
+          </ul>
+        </li>        
+        <li class="has-dropdown">
+          <a href="/developers/">Developers</a>
+          <ul class="dropdown">
+            <li><a href="/developers/">Podlove&nbsp;Development</a></li>
+            
+              <li><a href="/developers/publisher-constraints/">Publisher:&nbsp;Constraints</a></li>
+            
+              <li><a href="/developers/publisher-modules/">Publisher: Writing&nbsp;Modules</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+  
+</div>
+
+  
+    <div class="podlove-panel">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Understanding&nbsp;Templates</h1>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="content row">
+
+    <div class="small-12 large-8 columns">
+      <p>Templates are user-defined, dynamic, reusable snippets of <span class="caps">HTML.</span> The publisher provides an <span class="caps">API</span> to <a href="/publisher/template-reference/">every piece of data</a> related to your podcast. Using templates, you can display every detail in every layout you&nbsp;like.</p>
+
+<p><a href="http://twig.sensiolabs.org/">Twig</a> is used to make templates dynamic. Printing a variable in Twig looks like&nbsp;this:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;strong&gt;</span>{{ podcast.title }}<span class="tag">&lt;/strong&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p>You can iterate over a list of&nbsp;items:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+{% for episode in podcast.episodes %}
+    <span class="tag">&lt;li&gt;</span>
+        <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ episode.url }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            {{ episode.title }}
+        <span class="tag">&lt;/a&gt;</span> — {{ episode.subtitle }}
+    <span class="tag">&lt;/li&gt;</span>
+{% endfor %}
+<span class="tag">&lt;/ul&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p>These are the basics. You can refer to the <a href="http://twig.sensiolabs.org/doc/templates.html">Twig Documentation</a> for all available&nbsp;options.</p>
+
+<h2 id="creation--usage">Creation <span class="amp">&amp;</span>&nbsp;Usage</h2>
+
+<p>To create a template, go to <code>Podlove → Templates</code> and click “Add&nbsp;New”.</p>
+
+<p>The <em><span class="caps">ID</span></em> is used to reference the template from your episodes or pages. Choose a descriptive name. The fun starts below. The <em><span class="caps">HTML</span> Template</em> is a freeform textfield. Write <span class="caps">HTML</span>/Twig there. All <a href="/publisher/template-reference/">template variables</a> and WordPress shortcodes are available. Click save when you are&nbsp;done.</p>
+
+<p>Go to any post, page or episode and paste the template shortcode. It should look like&nbsp;this:</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>[podlove-template id=&quot;episode&quot;]</pre></td>
+</tr></table>
+</div>
+
+<p>Save and view the edited page. You should see the contents of your template. You can now go back to the template and edit until you like the&nbsp;results.</p>
+
+<h2 id="episode-templates">Episode&nbsp;Templates</h2>
+
+<p>Templates which are used in episodes are special. In episodes, an additional variable is available: <code>episode</code>. It contains the current episode&nbsp;object.</p>
+
+<p>For example, you could build your own download&nbsp;list:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+    {% for file in episode.files %}
+        {% if file.asset.downloadable %}
+            <span class="tag">&lt;li&gt;</span>
+                <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ file.url }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{ file.asset.title }}<span class="tag">&lt;/a&gt;</span>
+            <span class="tag">&lt;/li&gt;</span>
+        {% endif %}
+    {% endfor %}
+<span class="tag">&lt;/ul&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<h2 id="subtemplates">Subtemplates</h2>
+
+<p>If you are looking for a way to reuse template parts or want to split up complex templates, subtemplates are the solution. They allow to embed templates in templates while keeping the scope of one local variable. All global variables are available as&nbsp;usual.</p>
+
+<p>An&nbsp;example:</p>
+
+<p>The template <code>file-link</code> contains the markup to render the link to a&nbsp;file.</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ file.url }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{ file.asset.title }}<span class="tag">&lt;/a&gt;</span></pre></td>
+</tr></table>
+</div>
+
+<p>Now this template can be used in another&nbsp;template:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+    {% for file in episode.files %}
+        {% if file.asset.downloadable %}
+            <span class="tag">&lt;li&gt;</span>{{ file|template(&quot;file-link&quot;) }}<span class="tag">&lt;/li&gt;</span>
+        {% endif %}
+    {% endfor %}
+<span class="tag">&lt;/ul&gt;</span></pre></td>
+</tr></table>
+</div>
+
+
+    </div>
+
+    
+      <div class="toc_wrapper small-12 large-4 columns">
+        <h3>Understanding&nbsp;Templates</h3>
+        
+          
+              <p>↑ <a href="/guides/">Back to&nbsp;Guides</a></p>
+          
+        
+        <ol class="toc"><li><a href="#creation--usage">Creation &amp;&nbsp;Usage</a></li><li><a href="#episode-templates">Episode&nbsp;Templates</a></li><li><a href="#subtemplates">Subtemplates</a></li></ol>
+      </div>
+    
+  </div>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '/assets/js/vendor/zepto' : '/assets/js/vendor/jquery') +
+  '.js><\/script>')
+  </script>&nbsp;<script src="/assets/js/foundation/foundation.js"></script>
+  <script src="/assets/js/foundation/foundation-topbar.js"></script>&nbsp;<script>
+  $(document).foundation();
+  </script>
+
+</body>
+</html>

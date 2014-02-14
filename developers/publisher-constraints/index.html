@@ -34,13 +34,21 @@
           <ul class="dropdown">
             <li><a href="/publisher/">Podlove&nbsp;Publisher</a></li>
             
-              <li><a href="/publisher/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
-            
-              <li><a href="/publisher/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
-            
               <li><a href="/publisher/shortcodes/">Shortcode&nbsp;Reference</a></li>
             
               <li><a href="/publisher/template-reference/">Template&nbsp;Reference</a></li>
+            
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/guides/">Guides</a>
+          <ul class="dropdown">
+            
+              <li><a href="/guides/creating-a-podcast-archive-page/">Creating a Podcast Archive&nbsp;Page</a></li>
+            
+              <li><a href="/guides/migration/">Migrating an existing Podcast to&nbsp;Podlove</a></li>
+            
+              <li><a href="/guides/understanding-templates/">Understanding&nbsp;Templates</a></li>
             
           </ul>
         </li>        
@@ -105,7 +113,7 @@
 <p>Have a look at the following example&nbsp;implementation:</p>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -184,7 +192,7 @@
 <p>Your validatable entity must implement the <code>Validatable</code> interface. This requires the implementation of <code>constraint($constraintClassName)</code> for adding a constraint to the entity and <code>validate</code> for validating all constraints. You can probably just copy the following&nbsp;implementation:</p>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -245,7 +253,7 @@
 <p>If you are just validating module settings, a hook on the modules settings page might be a good&nbsp;place:</p>
 
 <div class="highlight php "><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -281,7 +289,9 @@ add_action(<span class="string"><span class="delimiter">'</span><span class="con
       <div class="toc_wrapper small-12 large-4 columns">
         <h3>Publisher:&nbsp;Constraints</h3>
         
-            <p>↑ <a href="/developers/">Back to&nbsp;Developers</a></p>
+          
+              <p>↑ <a href="/developers/">Back to&nbsp;Developers</a></p>
+          
         
         <ol class="toc"><li><a href="#what-is-a-good-constraint">What is a good&nbsp;Constraint?</a></li><li><a href="#the-constraint-class">The Constraint&nbsp;Class</a></li><li><a href="#setting-up-the-validatable-entity">Setting up the validatable&nbsp;Entity</a></li><li><a href="#executing-validations">Executing&nbsp;Validations</a></li></ol>
       </div>
