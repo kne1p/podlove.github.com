@@ -182,7 +182,7 @@
 </tr></table>
 </div>
 
-<p>Now this template can be used in another&nbsp;template:</p>
+<p>Now this template can be used in another template. All variables from the parent template are available in the child&nbsp;template.</p>
 
 <div class="highlight html "><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -196,7 +196,7 @@
   <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
     {% for file in episode.files %}
         {% if file.asset.downloadable %}
-            <span class="tag">&lt;li&gt;</span>{{ file|template(&quot;file-link&quot;) }}<span class="tag">&lt;/li&gt;</span>
+            <span class="tag">&lt;li&gt;</span>{{ include(&quot;file-link&quot;) }}<span class="tag">&lt;/li&gt;</span>
         {% endif %}
     {% endfor %}
 <span class="tag">&lt;/ul&gt;</span></pre></td>

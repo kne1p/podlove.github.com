@@ -296,9 +296,57 @@
             </td>
             <td>
                 <strong>
-                    
+                    List of podcast&nbsp;contributors.
                 </strong>
-                
+                <p>Examples:</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{# iterating over a list of contributors #}
+{% for contributor in podcast.contributors({scope: &quot;podcast&quot;}) %}
+    {{ contributor.name }}
+    {% if not loop.last %}, {% endif %}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>{# iterating over a grouped list of contributors #}
+{% for contributorGroup in podcast.contributors({scope: &quot;podcast&quot;, groupby: &quot;group&quot;}) %}
+    &lt;strong&gt;{{ contributorGroup.group.title }}:&lt;/strong&gt; 
+    {% for contributor in contributorGroup.contributors %}
+        {{ contributor.name }}
+        {% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+
+<p>Options:</p>
+
+<ul>
+  <li><strong>scope:</strong>   Either “global” or “podcast”. “global” returns <em>all</em>&nbsp;contributors.
+                “podcast” returns the contributors configured in podcast&nbsp;settings.
+                Default:&nbsp;“global”.</li>
+  <li><strong>group:</strong>   (optional) filter by group slug. Defaults to “all”, which does not&nbsp;filter.</li>
+  <li><strong>role:</strong>    (optional) filter by role slug. Defaults to “all”, which does not&nbsp;filter.</li>
+  <li><strong>groupby:</strong> (optional) group or role slug. Group by “group” or&nbsp;“role”.
+                If used, the returned data is has another layer for the&nbsp;groups.
+                See examples for more&nbsp;details.</li>
+</ul>
 <p></p>
 
             </td>
@@ -402,7 +450,7 @@
                 <strong>
                     Post publication&nbsp;date
                 </strong>
-                <p>Uses WordPress date format by default or custom format:&nbsp;<code>{{ episode.publicationDate('Y-m-d') }}</code></p>
+                <p>Uses WordPress datetime format by default or custom format:&nbsp;<code>{{ episode.publicationDate('Y-m-d') }}</code></p>
 <p></p>
 
             </td>
@@ -606,9 +654,54 @@
             </td>
             <td>
                 <strong>
-                    
+                    List of episode&nbsp;contributors
                 </strong>
-                
+                <p>Examples:</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{# iterating over a list of contributors #}
+{% for contributor in episode.contributors %}
+    {{ contributor.name }}
+    {% if not loop.last %}, {% endif %}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>{# iterating over a grouped list of contributors #}
+{% for contributorGroup in episode.contributors({groupby: &quot;group&quot;}) %}
+    &lt;strong&gt;{{ contributorGroup.group.title }}:&lt;/strong&gt; 
+    {% for contributor in contributorGroup.contributors %}
+        {{ contributor.name }}
+        {% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+
+<p>Options:</p>
+
+<ul>
+  <li><strong>group:</strong>   (optional) group slug. If none is given, show all&nbsp;contributors.</li>
+  <li><strong>role:</strong>    (optional) role slug. If none is given, show all&nbsp;contributors.</li>
+  <li><strong>groupby:</strong> (optional) group or role slug. Group by “group” or&nbsp;“role”.
+           If used, the returned data is has another layer for the&nbsp;groups.
+           See examples for more&nbsp;details.</li>
+</ul>
 <p></p>
 
             </td>
@@ -1110,6 +1203,22 @@ not if you access the global <code>contributors</code>&nbsp;directly.</p>
         <tr>
             <td valign="top">
                 <code>
+                    contributor.comment
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Contribution&nbsp;comment
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
                     contributor.avatar
                 </code>
             </td>
@@ -1264,6 +1373,23 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
                     Flattr&nbsp;username
                 </strong>
                 
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    contributor.flattr_url
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Flattr&nbsp;<span class="caps">URL.</span>
+                </strong>
+                <p>When on a WordPress page, it returns the <span class="caps"><span class="caps">URL</span></span> for the person. Otherwise&nbsp;a
+<span class="caps"><span class="caps">URL</span></span> for that person <em>in this specific episode</em> is&nbsp;generated.</p>
 <p></p>
 
             </td>
