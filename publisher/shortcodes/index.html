@@ -83,67 +83,36 @@
   <div class="content row">
 
     <div class="small-12 large-8 columns">
-      <h2 id="web-player--downloads">Web Player <span class="amp">&amp;</span>&nbsp;Downloads</h2>
+      <h2 id="feeds">Feeds</h2>
+
+<p><code>[podlove-feed-list]</code></p>
+
+<p>Lists all discoverable feeds for easy&nbsp;subscription.</p>
+
+<h2 id="episode-archive">Episode&nbsp;Archive</h2>
+
+<p><code>[podlove-episode-list]</code></p>
+
+<p>Lists all episodes including their episode image, publication date, title, subtitle and duration&nbsp;chronologically.</p>
+
+<h2 id="downloads">Downloads</h2>
 
 <p>Use these in an episode&nbsp;post:</p>
 
 <p><code>[podlove-episode-downloads]</code>: Display downloads in a dropdown menu.<br />
-<code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available formats.<br />
-<code>[podlove-web-player]</code>: Display a web player.<br />
-<code>[podlove-podcast-license]</code>: Display the podcast license.<br />
-<code>[podlove-episode-license]</code>: Display the episode license (with fallback to podcast license if none is&nbsp;defined). </p>
-
-<h2 id="episode-data">Episode&nbsp;Data</h2>
-<p><code>[podlove-episode field="..."]</code></p>
-
-<p>Displays the fields&nbsp;data.</p>
-
-<h3 id="parameters">Parameters</h3>
-
-<p><strong>field:</strong> <em>(required)</em> Name of the data field. Possible values:<br />
-title, subtitle, summary, slug, duration, chapters, image, record_date, publication_date<br />
-<strong>format:</strong> <em>(optional)</em> used by <code>duration</code> field. Possible values: <code>full</code>, <code>HH:MM:SS</code>. Default: <code>HH:MM:SS</code><br />
-<strong>date_format:</strong> <em>(optional)</em> used by <code>record_date</code> and <code>publication_date</code>. For options, see <a href="http://php.net/manual/en/function.date.php">date manual</a>. Defaults to WordPress&nbsp;settings.</p>
-
-<div class="highlight plain "><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-</pre></td>
-  <td class="code"><pre>[podlove-episode field=&quot;subtitle&quot;]
-[podlove-episode field=&quot;summary&quot;]
-[podlove-episode field=&quot;slug&quot;]
-[podlove-episode field=&quot;duration&quot;]
-[podlove-episode field=&quot;chapters&quot;]</pre></td>
-</tr></table>
-</div>
-
-<h2 id="podcast-data">Podcast&nbsp;Data</h2>
-
-<p><code>[podlove-podcast field="..."]</code></p>
-
-<p>Displays the fields&nbsp;data.  </p>
-
-<h3 id="parameters-1">Parameters</h3>
-
-<p><strong>field</strong>: <em>(required)</em> Name of the data field. Possible values:<br />
-title, slug, subtitle, cover_image, summary, author_name, owner_name,&nbsp;owner_email,
-publisher_name, publisher_url, license_name, license_url, keywords,&nbsp;explicit,
-label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length,&nbsp;language</p>
+<code>[podlove-episode-downloads style="buttons"]</code> : Display download buttons for all available&nbsp;formats. </p>
 
 <h2 id="contributors">Contributors</h2>
 
-<p><code>[podlove-contributor-list]</code></p>
+<p><code>[podlove-episode-contributor-list]</code></p>
 
 <p>Lists all contributors of the current episode. If used on a non-episode page, it lists all existing contributors with at least one contribution to an episode. Requires “Contributors”&nbsp;module.</p>
 
 <blockquote>
-  <p><strong><span class="caps">WARNING</span></strong> <code>[podlove-contributors]</code> is <em>deprecated</em>. Please replace it with a <code>[podlove-contributor-list]</code> shortcode if you are using&nbsp;it.</p>
+  <p><strong><span class="caps">WARNING</span></strong> <code>[podlove-contributors]</code> and <code>[podlove-contributor-list]</code> are <em>deprecated</em>. Please replace it with a <code>[podlove-episode-contributor-list]</code> shortcode if you are using&nbsp;it.</p>
 </blockquote>
 
-<h3 id="parameters-2">Parameters</h3>
+<h5 id="parameters">Parameters</h5>
 
 <ul>
   <li><strong>preset:</strong> “table”, “list” or “comma separated”. Default:&nbsp;“table”</li>
@@ -155,18 +124,25 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
   <li><strong>groups:</strong> One of “yes”, “no”. Display group. Default:&nbsp;“no” </li>
   <li><strong>donations</strong> One of “yes”, “no”. Display donation column. Default:&nbsp;“no”</li>
   <li><strong>flattr:</strong> “yes” or “no”. Display Flattr column. Default:&nbsp;“no”</li>
-  <li><strong>linkto:</strong> One of “none”, “publicemail”, “www”, “adn”, “twitter”, “facebook”, “amazonwishlist”. Links contributor name to the service if available. Default:&nbsp;“none”</li>
 </ul>
+
+<p><code>[podlove-podcast-contributor-list]</code></p>
+
+<p>Lists all contributors configured in&nbsp;<code>Podlove &gt; Podcast Settings &gt; Contributors</code>.</p>
+
+<p><code>[podlove-global-contributor-list]</code></p>
+
+<p>Lists all podcast contributors and shows related&nbsp;episodes.</p>
 
 <h2 id="templates">Templates</h2>
 
 <p><code>[podlove-template id="Template Title"]</code></p>
 
-<p>Renders configured episode&nbsp;template.</p>
+<p>Renders a template. All custom shortcode parameters will be accessible in the template. Please read the <a href="/guides/understanding-templates/">Understanding Templates</a> for more&nbsp;details.</p>
 
-<p><code>[podlove-template id="..."]</code></p>
+<p><code>[podlove-template id="..." customvariable="foo"]</code></p>
 
-<h3 id="parameters-3">Parameters</h3>
+<h5 id="parameters-1">Parameters</h5>
 
 <p><strong>title:</strong> <em>(required)</em> Title of template to render.<br />
 <strong>autop:</strong> <em>(optional)</em> Wraps blocks of text in p tags. ‘yes’ or ‘no’. Default:&nbsp;‘yes’</p>
@@ -181,7 +157,7 @@ label, episode_prefix, media_file_base_uri, uri_delimiter, episode_number_length
               <p>↑ <a href="/publisher/">Back to Podlove&nbsp;Publisher</a></p>
           
         
-        <ol class="toc"><li><a href="#web-player--downloads">Web Player &amp;&nbsp;Downloads</a></li><li><a href="#episode-data">Episode&nbsp;Data</a></li><li><a href="#podcast-data">Podcast&nbsp;Data</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#templates">Templates</a></li></ol>
+        <ol class="toc"><li><a href="#feeds">Feeds</a></li><li><a href="#episode-archive">Episode&nbsp;Archive</a></li><li><a href="#downloads">Downloads</a></li><li><a href="#contributors">Contributors</a></li><li><a href="#templates">Templates</a></li></ol>
       </div>
     
   </div>
