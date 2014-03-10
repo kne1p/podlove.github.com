@@ -352,6 +352,43 @@
             </td>
         </tr>
     
+        <tr>
+            <td valign="top">
+                <code>
+                    podcast.services
+                </code>
+            </td>
+            <td>
+                <strong>
+                    List of service&nbsp;profiles
+                </strong>
+                <p>Parameters:</p>
+
+<ul>
+  <li><strong>type:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{% for service in podcast.services({type: &quot;social&quot;}) %}
+  <span class="tag">&lt;a</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_blank</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.profileUrl }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.logoUrl }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">podlove-contributor-button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/a&gt;</span>
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+<p></p>
+
+            </td>
+        </tr>
+    
 </table>
 
 <p><a id="podlove-class-episode"></a></p>
@@ -1473,6 +1510,43 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
 <p>
                         see <a href="#podlove-class-episode">episode</a>
                     </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    contributor.services
+                </code>
+            </td>
+            <td>
+                <strong>
+                    List of service&nbsp;profiles
+                </strong>
+                <p>Parameters:</p>
+
+<ul>
+  <li><strong>type:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{% for service in contributor.services({type: &quot;social&quot;}) %}
+  <span class="tag">&lt;a</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_blank</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.profileUrl }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;img</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.logoUrl }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">podlove-contributor-button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;/a&gt;</span>
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+<p></p>
 
             </td>
         </tr>
