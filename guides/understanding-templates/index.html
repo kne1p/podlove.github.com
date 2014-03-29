@@ -203,6 +203,34 @@
 </tr></table>
 </div>
 
+<h2 id="macros">Macros</h2>
+
+<p>Twig allows you to create <a href="http://twig.sensiolabs.org/doc/tags/macro.html">macros</a> to put often used <span class="caps">HTML</span> idioms into reusable elements to not repeat yourself. To be able to use them in multiple templates, they are best saved in a separate template. You might call it&nbsp;“mymacros”:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="comment">&lt;!-- template &quot;mymacros&quot; --&gt;</span>
+{% macro input(name, value, type, size) %}
+    <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ type|default('text') }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ name }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ value|e }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">size</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ size|default(20) }}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+{% endmacro %}</pre></td>
+</tr></table>
+</div>
+
+<p>To use them in another template, you need to import the macros before using&nbsp;them:</p>
+
+<div class="highlight html "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre>{% import &quot;mymacros&quot; as forms %}
+{{ forms.input('username') }}</pre></td>
+</tr></table>
+</div>
+
 
     </div>
 
@@ -214,7 +242,7 @@
               <p>↑ <a href="/guides/">Back to&nbsp;Guides</a></p>
           
         
-        <ol class="toc"><li><a href="#creation--usage">Creation &amp;&nbsp;Usage</a></li><li><a href="#episode-templates">Episode&nbsp;Templates</a></li><li><a href="#subtemplates">Subtemplates</a></li></ol>
+        <ol class="toc"><li><a href="#creation--usage">Creation &amp;&nbsp;Usage</a></li><li><a href="#episode-templates">Episode&nbsp;Templates</a></li><li><a href="#subtemplates">Subtemplates</a></li><li><a href="#macros">Macros</a></li></ol>
       </div>
     
   </div>

@@ -280,7 +280,8 @@
                 <strong>
                     License
                 </strong>
-                
+                <p>To render an <span class="caps"><span class="caps">HTML</span></span> license,&nbsp;use 
+<code>{% include '@core/license.twig' with {'license': podcast.license} %}</code></p>
 <p>
                         see <a href="#podlove-class-license">license</a>
                     </p>
@@ -488,7 +489,27 @@
                     Post publication&nbsp;date
                 </strong>
                 <p>Uses WordPress datetime format by default or custom format:&nbsp;<code>{{ episode.publicationDate('Y-m-d') }}</code></p>
-<p></p>
+<p>
+                        see <a href="#podlove-class-datetime">datetime</a>
+                    </p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    episode.recordingDate
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Post recording&nbsp;date
+                </strong>
+                <p>Uses WordPress datetime format by default or custom format:&nbsp;<code>{{ episode.recordingDate('Y-m-d') }}</code></p>
+<p>
+                        see <a href="#podlove-class-datetime">datetime</a>
+                    </p>
 
             </td>
         </tr>
@@ -533,10 +554,13 @@
             </td>
             <td>
                 <strong>
-                    Duration
+                    Duration&nbsp;Object
                 </strong>
-                <p>Use <code>duration("full")</code> to include&nbsp;milliseconds.</p>
-<p></p>
+                <p>Use <code>duration</code> to display formatted hours, minutes and&nbsp;seconds.
+Alternatively, use the duration accessors for custom&nbsp;rendering.</p>
+<p>
+                        see <a href="#podlove-class-duration">duration</a>
+                    </p>
 
             </td>
         </tr>
@@ -675,7 +699,10 @@
                 <strong>
                     License
                 </strong>
-                
+                <p>To render an <span class="caps"><span class="caps">HTML</span></span> license, use <code>{% include '@core/license.twig' %}</code>&nbsp;for
+a license with fallback to the podcast license&nbsp;or 
+<code>{% include '@core/license.twig' with {'license': episode.license} %}</code>
+for the episode license&nbsp;only.</p>
 <p>
                         see <a href="#podlove-class-license">license</a>
                     </p>
@@ -975,6 +1002,22 @@
         <tr>
             <td valign="top">
                 <code>
+                    file.id
+                </code>
+            </td>
+            <td>
+                <strong>
+                    File&nbsp;id
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
                     file.episode
                 </code>
             </td>
@@ -1035,6 +1078,94 @@
                     <span class="caps">URL</span>
                 </strong>
                 
+<p></p>
+
+            </td>
+        </tr>
+    
+</table>
+
+<p><a id="podlove-class-duration"></a></p>
+
+<h4 id="duration">Duration</h4>
+
+<table>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    duration.hours
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Hours
+                </strong>
+                <p>0,1,2,…</p>
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    duration.minutes
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Minutes
+                </strong>
+                <p>0,1,2,…,59</p>
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    duration.seconds
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Seconds
+                </strong>
+                <p>0,1,2,…,59</p>
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    duration.milliseconds
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Milliseconds
+                </strong>
+                <p>0,1,2,…,999</p>
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    duration.totalMilliseconds
+                </code>
+            </td>
+            <td>
+                <strong>
+                    The total duration in&nbsp;milliseconds
+                </strong>
+                <p>0,1,2,…</p>
 <p></p>
 
             </td>
@@ -1265,23 +1396,9 @@ not if you access the global <code>contributors</code>&nbsp;directly.</p>
                 </strong>
                 <p>Dimensions default to&nbsp;50x50px.
 Change it via parameter:&nbsp;<code>contributor.avatar(32)</code></p>
-<p></p>
 
-            </td>
-        </tr>
-    
-        <tr>
-            <td valign="top">
-                <code>
-                    contributor.avatarUrl
-                </code>
-            </td>
-            <td>
-                <strong>
-                    Avatar image&nbsp;<span class="caps">URL</span>
-                </strong>
-                <p>Dimensions default to&nbsp;50x50px.
-Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
+<p>To render an <span class="caps"><span class="caps">HTML</span></span> image&nbsp;tag:
+<code>{% include '@contributors/avatar.twig' with {'avatar': contributor.avatar} only %}</code>&nbsp;or&nbsp;<code>{% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 150} only %}</code></p>
 <p></p>
 
             </td>
@@ -1314,6 +1431,39 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
                     Email address for internal&nbsp;use
                 </strong>
                 
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    contributor.flattr
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Flattr&nbsp;username
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    contributor.flattr_url
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Flattr&nbsp;<span class="caps">URL.</span>
+                </strong>
+                <p>When on a WordPress page, it returns the <span class="caps"><span class="caps">URL</span></span> for the person. Otherwise&nbsp;a
+<span class="caps"><span class="caps">URL</span></span> for that person <em>in this specific episode</em> is&nbsp;generated.</p>
 <p></p>
 
             </td>
@@ -1567,6 +1717,38 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
         <tr>
             <td valign="top">
                 <code>
+                    license.creativeCommons
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Is this a creative commons&nbsp;license?
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    license.valid
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Is the license valid? Is all required data&nbsp;available?
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
                     license.html
                 </code>
             </td>
@@ -1575,6 +1757,126 @@ Change it via parameter:&nbsp;<code>contributor.avatarUrl(32)</code></p>
                     <span class="caps">HTML</span>
                 </strong>
                 
+<p></p>
+
+            </td>
+        </tr>
+    
+</table>
+
+<p><a id="podlove-class-datetime"></a></p>
+
+<h4 id="datetime">DateTime</h4>
+
+<table>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.year
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Year
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.month
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Month&nbsp;number
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.day
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Day of the&nbsp;month
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.hours
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Hours of the day, 24h&nbsp;format
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.minutes
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Minutes of the current&nbsp;hour
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.seconds
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Seconds of the current&nbsp;minute
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    datetime.format
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Custom time&nbsp;format
+                </strong>
+                <p>See <a href="http://php.net/manual/en/function.date.php"><span class="caps"><span class="caps">PHP</span></span> date documentation</a> for available&nbsp;formats</p>
 <p></p>
 
             </td>
