@@ -244,7 +244,66 @@
                 <strong>
                     Episodes
                 </strong>
-                
+                <p>Filter and order episodes with&nbsp;parameters:</p>
+
+<ul>
+  <li>post_id: one episode matching the given post&nbsp;id</li>
+  <li>post_ids: list of episodes matching the given list of post&nbsp;ids</li>
+  <li>slug: one episode matching the given&nbsp;slug</li>
+  <li>slugs: list of episodes matching the given list of&nbsp;slugs</li>
+  <li>post_status: Publication status of the post. Defaults to&nbsp;‘publish’</li>
+  <li>order: Designates the ascending or descending order of the ‘orderby’ parameter. Defaults to&nbsp;‘<span class="caps"><span class="caps">DESC</span></span>’.
+    <ul>
+      <li>‘<span class="caps"><span class="caps">ASC</span></span>’ - ascending order from lowest to highest values (1, 2, 3; a, b,&nbsp;c).</li>
+      <li>‘<span class="caps"><span class="caps">DESC</span></span>’ - descending order from highest to lowest values (3, 2, 1; c, b,&nbsp;a).</li>
+    </ul>
+  </li>
+  <li>orderby: Sort retrieved episodes by parameter. Defaults to&nbsp;‘publicationDate’.
+    <ul>
+      <li>‘publicationDate’ - Order by publication&nbsp;date.</li>
+      <li>‘recordingDate’ - Order by recording&nbsp;date.</li>
+      <li>‘title’ - Order by&nbsp;title.</li>
+      <li>‘slug’ - Order by episode&nbsp;slug.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Examples</strong></p>
+
+<p>Iterate over all published episodes, ordered by publication&nbsp;date.</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>{% for e in podcast.episodes %}
+  {{ e.title }}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+
+<p>Order by title in ascending&nbsp;order.</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>{% for e in podcast.episodes({orderby: 'title', 'order': 'ASC'}) %}
+  {{ e.title }}
+{% endfor %}</pre></td>
+</tr></table>
+</div>
+
+<p>Fetch one episode by&nbsp;slug.</p>
+
+<div class="highlight plain "><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>{{ podcast.episodes({slug: 'pod001'}).title }}</pre></td>
+</tr></table>
+</div>
 <p>
                         see <a href="#podlove-class-episode">episode</a>
                     </p>
@@ -339,12 +398,14 @@
 <p>Options:</p>
 
 <ul>
+  <li><strong>id:</strong>      Fetch one contributor by its id. Ignores all other&nbsp;parameters.
+             Example:&nbsp;<code>podcast.contributors({id: 'james'}).name</code></li>
   <li><strong>scope:</strong>   Either “global” or “podcast”. “global” returns <em>all</em>&nbsp;contributors.
                 “podcast” returns the contributors configured in podcast&nbsp;settings.
                 Default:&nbsp;“global”.</li>
-  <li><strong>group:</strong>   (optional) filter by group slug. Defaults to “all”, which does not&nbsp;filter.</li>
-  <li><strong>role:</strong>    (optional) filter by role slug. Defaults to “all”, which does not&nbsp;filter.</li>
-  <li><strong>groupby:</strong> (optional) group or role slug. Group by “group” or&nbsp;“role”.
+  <li><strong>group:</strong>   filter by group slug. Defaults to “all”, which does not&nbsp;filter.</li>
+  <li><strong>role:</strong>    filter by role slug. Defaults to “all”, which does not&nbsp;filter.</li>
+  <li><strong>groupby:</strong> group or role slug. Group by “group” or&nbsp;“role”.
                 If used, the returned data is has another layer for the&nbsp;groups.
                 See examples for more&nbsp;details.</li>
 </ul>
@@ -471,6 +532,22 @@
             <td>
                 <strong>
                     Post&nbsp;content
+                </strong>
+                
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
+                    episode.player
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Web Player for the current&nbsp;episode
                 </strong>
                 
 <p></p>
@@ -760,9 +837,12 @@ for the episode license&nbsp;only.</p>
 <p>Options:</p>
 
 <ul>
-  <li><strong>group:</strong>   (optional) group slug. If none is given, show all&nbsp;contributors.</li>
-  <li><strong>role:</strong>    (optional) role slug. If none is given, show all&nbsp;contributors.</li>
-  <li><strong>groupby:</strong> (optional) group or role slug. Group by “group” or&nbsp;“role”.
+  <li><strong>id:</strong>      Fetch one contributor by its id. Ignores all other&nbsp;parameters. 
+             Returns null if the id belongs to an existing contributor which is not part of the&nbsp;episode. 
+             Example:&nbsp;<code>episode.contributors({id: 'james'}).name</code></li>
+  <li><strong>group:</strong>   group slug. If none is given, show all&nbsp;contributors.</li>
+  <li><strong>role:</strong>    role slug. If none is given, show all&nbsp;contributors.</li>
+  <li><strong>groupby:</strong> group or role slug. Group by “group” or&nbsp;“role”.
            If used, the returned data is has another layer for the&nbsp;groups.
            See examples for more&nbsp;details.</li>
 </ul>
