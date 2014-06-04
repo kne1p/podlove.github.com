@@ -351,6 +351,43 @@
         <tr>
             <td valign="top">
                 <code>
+                    podcast.setting
+                </code>
+            </td>
+            <td>
+                <strong>
+                    Get a podcast&nbsp;setting.
+                </strong>
+                <p>Valid namespaces /&nbsp;names:</p>
+
+<p><code>
+ website
+ 	merge_episodes
+ 	hide_wp_feed_discovery
+ 	use_post_permastruct
+ 	custom_episode_slug
+ 	episode_archive
+ 	episode_archive_slug
+ 	url_template
+ 	force_download
+ 	ssl_verify_peer
+ metadata
+ 	enable_episode_recording_date
+ 	enable_episode_explicit
+ 	enable_episode_license
+ redirects
+ 	podlove_setting_redirect
+ tracking
+ 	mode
+</code></p>
+<p></p>
+
+            </td>
+        </tr>
+    
+        <tr>
+            <td valign="top">
+                <code>
                     podcast.contributors
                 </code>
             </td>
@@ -400,14 +437,28 @@
 <ul>
   <li><strong>id:</strong>      Fetch one contributor by its id. Ignores all other&nbsp;parameters.
              Example:&nbsp;<code>podcast.contributors({id: 'james'}).name</code></li>
-  <li><strong>scope:</strong>   Either “global” or “podcast”. “global” returns <em>all</em>&nbsp;contributors.
-                “podcast” returns the contributors configured in podcast&nbsp;settings.
-                Default:&nbsp;“global”.</li>
+  <li><strong>scope:</strong>   Either “global”, “global-active” or&nbsp;“podcast”.
+             - “global” returns all&nbsp;contributors.
+             - “global-active” returns all contributors&nbsp;with 
+                at least one contribution in a published&nbsp;episode.
+                - “podcast” returns the contributors configured in podcast&nbsp;settings.
+                Default:&nbsp;“global-active”.</li>
   <li><strong>group:</strong>   filter by group slug. Defaults to “all”, which does not&nbsp;filter.</li>
   <li><strong>role:</strong>    filter by role slug. Defaults to “all”, which does not&nbsp;filter.</li>
   <li><strong>groupby:</strong> group or role slug. Group by “group” or&nbsp;“role”.
                 If used, the returned data is has another layer for the&nbsp;groups.
                 See examples for more&nbsp;details.</li>
+  <li><strong>order:</strong>   Designates the ascending or descending order of the ‘orderby’ parameter. Defaults to&nbsp;‘<span class="caps"><span class="caps">DESC</span></span>’.
+    <ul>
+      <li>‘<span class="caps"><span class="caps">ASC</span></span>’ - ascending order from lowest to highest values (1, 2, 3; a, b,&nbsp;c).</li>
+      <li>‘<span class="caps"><span class="caps">DESC</span></span>’ - descending order from highest to lowest values (3, 2, 1; c, b,&nbsp;a).</li>
+    </ul>
+  </li>
+  <li><strong>orderby:</strong> Sort contributors by parameter. Defaults to&nbsp;‘name’.
+    <ul>
+      <li>‘name’ - Order by public&nbsp;name.</li>
+    </ul>
+  </li>
 </ul>
 <p></p>
 
@@ -427,7 +478,8 @@
                 <p>Parameters:</p>
 
 <ul>
-  <li><strong>type:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+  <li><strong>category:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+  <li><strong>type:</strong>     (optional) Filter services by type. List of all service types: 500px, amazon wishlist, app.net, bandcamp, bitbucket, bitcoin, deviantart, diaspora, dogecoin, dribbble, facebook, flattr, flickr, generic wishlist, github, google+, instagram, jabber, last.fm, linkedin, litecoin, openstreetmap, paypal, pinboard, pinterest, playstation network, skype, soundcloud, soup, steam, steam wishlist, thomann wishlist, tumblr, twitter, website, xbox live, xing,&nbsp;youtube</li>
 </ul>
 
 <p>Example:</p>
@@ -439,7 +491,7 @@
 4
 5
 </pre></td>
-  <td class="code"><pre>{% for service in podcast.services({type: &quot;social&quot;}) %}
+  <td class="code"><pre>{% for service in podcast.services({category: &quot;social&quot;}) %}
   <span class="tag">&lt;a</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_blank</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.profileUrl }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;img</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.logoUrl }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">podlove-contributor-button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
   <span class="tag">&lt;/a&gt;</span>
@@ -1580,7 +1632,8 @@ Change it via parameter:&nbsp;<code>contributor.avatar(32)</code></p>
                 <p>Parameters:</p>
 
 <ul>
-  <li><strong>type:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+  <li><strong>category:</strong> (optional) “social”, “donation” or “all”. Default:&nbsp;“all”</li>
+  <li><strong>type:</strong>     (optional) Filter services by type. List of all service types: 500px, amazon wishlist, app.net, bandcamp, bitbucket, bitcoin, deviantart, diaspora, dogecoin, dribbble, facebook, flattr, flickr, generic wishlist, github, google+, instagram, jabber, last.fm, linkedin, litecoin, openstreetmap, paypal, pinboard, pinterest, playstation network, skype, soundcloud, soup, steam, steam wishlist, thomann wishlist, tumblr, twitter, website, xbox live, xing,&nbsp;youtube</li>
 </ul>
 
 <p>Example:</p>
@@ -1592,7 +1645,7 @@ Change it via parameter:&nbsp;<code>contributor.avatar(32)</code></p>
 4
 5
 </pre></td>
-  <td class="code"><pre>{% for service in contributor.services({type: &quot;social&quot;}) %}
+  <td class="code"><pre>{% for service in contributor.services({category: &quot;social&quot;}) %}
   <span class="tag">&lt;a</span> <span class="attribute-name">target</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_blank</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.profileUrl }}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;img</span> <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">32</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.logoUrl }}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">podlove-contributor-button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">alt</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{{ service.title }}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
   <span class="tag">&lt;/a&gt;</span>
